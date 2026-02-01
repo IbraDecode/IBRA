@@ -2,17 +2,14 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchStream, reportProgress, fetchDetail } from '../services/api';
 
-const AUTO_PLAY_DELAY = 3000;
-
 export default function PlayerPage() {
   const { dramaId, episodeId } = useParams();
   const navigate = useNavigate();
 
   const videoRef = useRef(null);
-  const autoPlayTimerRef = useRef(null);
-  const countdownIntervalRef = useRef(null);
+  const hideTimerRef = useRef(null);
   const fastForwardRef = useRef(null);
-  const containerRef = useRef(null);
+  const isVideoEndedRef = useRef(false);
 
   const [drama, setDrama] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -25,14 +22,12 @@ export default function PlayerPage() {
   const [volume, setVolume] = useState(1);
   const [playbackSpeed, setPlaybackSpeed] = useState(1);
   const [showSpeedMenu, setShowSpeedMenu] = useState(false);
-  const [autoPlayCount, setAutoPlayCount] = useState(null);
-  const [nextEpisodeNum, setNextEpisodeNum] = useState(null);
+  const [isNavigating, setIsNavigating] = useState(false);
 
   const touchStartY = useRef(null);
+  const touchStartX = useRef(null);
   const touchStartTime = useRef(null);
   const lastTapTime = useRef(0);
-  const isTransitioning = useRef(false);
-  const hideTimerRef = useRef(null);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -46,105 +41,83 @@ export default function PlayerPage() {
   const scheduleHide = useCallback(() => {
     if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
     hideTimerRef.current = setTimeout(() => {
-      if (!autoPlayCount) setShowUI(false);
+      if (!isNavigating) setShowUI(false);
     }, 3000);
-  }, [autoPlayCount]);
+  }, [isNavigating]);
 
   useEffect(() => {
     scheduleHide();
     return () => {
       if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
-      if (autoPlayTimerRef.current) clearTimeout(autoPlayTimerRef.current);
-      if (countdownIntervalRef.current) clearInterval(countdownIntervalRef.current);
       if (fastForwardRef.current) clearTimeout(fastForwardRef.current);
     };
   }, [scheduleHide]);
 
-  const loadEpisode = useCallback(async (dramaId, episodeId, index) => {
-    setError(null);
-    try {
-      const detailRes = await fetchDetail(dramaId);
-      if (detailRes.success) {
-        setDrama(detailRes.data);
-        setCurrentIndex(index);
-        try {
-          const streamRes = await fetchStream(episodeId);
-          if (streamRes.success && streamRes.url) {
-            setStreamUrl(streamRes.url);
-          } else {
-            setError('Video tidak tersedia');
-          }
-        } catch {
-          setError('Gagal memuat video');
-        }
-      } else {
-        setError('Gagal memuat detail');
-      }
-    } catch {
-      setError('Gagal memuat episode');
-    }
-  }, []);
-
   useEffect(() => {
-    if (dramaId && episodeId && !isTransitioning.current) {
-      const init = async () => {
+    isVideoEndedRef.current = false;
+    setIsNavigating(false);
+    setShowUI(true);
+    setStreamUrl('');
+    setError(null);
+
+    const loadEpisodeData = async () => {
+      try {
         const detailRes = await fetchDetail(dramaId);
         if (detailRes.success) {
+          setDrama(detailRes.data);
           const idx = detailRes.data.episodes?.findIndex(e => e.id === episodeId);
-          if (idx >= 0) await loadEpisode(dramaId, episodeId, idx);
+          if (idx >= 0) {
+            setCurrentIndex(idx);
+            try {
+              const streamRes = await fetchStream(episodeId);
+              if (streamRes.success && streamRes.url) {
+                setStreamUrl(streamRes.url);
+              } else {
+                setError('Video tidak tersedia');
+              }
+            } catch {
+              setError('Gagal memuat video');
+            }
+          } else {
+            setError('Episode tidak ditemukan');
+          }
+        } else {
+          setError('Gagal memuat detail');
         }
-      };
-      init();
-    }
-  }, [dramaId, episodeId, loadEpisode]);
+      } catch {
+        setError('Gagal memuat episode');
+      }
+    };
+
+    loadEpisodeData();
+  }, [dramaId, episodeId]);
 
   useEffect(() => {
     if (streamUrl && videoRef.current) {
+      videoRef.current.pause();
       videoRef.current.src = streamUrl;
       videoRef.current.load();
       videoRef.current.play()
         .then(() => setIsPlaying(true))
-        .catch(() => {});
-      setShowUI(true);
-      scheduleHide();
+        .catch(() => setIsPlaying(false));
     }
-  }, [streamUrl, scheduleHide]);
+  }, [streamUrl]);
 
   const handleVideoEnded = useCallback(() => {
+    if (!drama || isVideoEndedRef.current) return;
+    isVideoEndedRef.current = true;
+
     setIsPlaying(false);
-    if (drama && currentIndex < drama.episodes.length - 1) {
-      setNextEpisodeNum(currentIndex + 2);
-      setAutoPlayCount(3);
-      countdownIntervalRef.current = setInterval(() => {
-        setAutoPlayCount(prev => {
-          if (prev <= 1) {
-            clearInterval(countdownIntervalRef.current);
-            return 0;
-          }
-          return prev - 1;
-        });
-      }, 1000);
-      autoPlayTimerRef.current = setTimeout(() => {
-        clearInterval(countdownIntervalRef.current);
-        const nextEp = drama.episodes[currentIndex + 1];
-        isTransitioning.current = true;
+
+    if (currentIndex < drama.episodes.length - 1) {
+      setIsNavigating(true);
+      const nextEp = drama.episodes[currentIndex + 1];
+
+      setTimeout(() => {
         navigate(`/player/${dramaId}/${nextEp.id}`, { replace: true });
-        setTimeout(() => {
-          isTransitioning.current = false;
-          setAutoPlayCount(null);
-          setNextEpisodeNum(null);
-        }, 100);
-      }, AUTO_PLAY_DELAY);
+      }, 500);
     }
   }, [drama, currentIndex, navigate, dramaId]);
-
-  const handleCancelAutoPlay = useCallback(() => {
-    if (autoPlayTimerRef.current) clearTimeout(autoPlayTimerRef.current);
-    if (countdownIntervalRef.current) clearInterval(countdownIntervalRef.current);
-    setAutoPlayCount(null);
-    setNextEpisodeNum(null);
-    scheduleHide();
-  }, [scheduleHide]);
 
   const togglePlay = useCallback(() => {
     if (videoRef.current) {
@@ -186,40 +159,45 @@ export default function PlayerPage() {
   }, [scheduleHide]);
 
   const goToEpisode = useCallback((index) => {
-    if (drama && drama.episodes[index]) {
-      isTransitioning.current = true;
+    if (drama && drama.episodes[index] && !isNavigating) {
+      isVideoEndedRef.current = true;
+      setIsNavigating(true);
       navigate(`/player/${dramaId}/${drama.episodes[index].id}`, { replace: true });
-      setTimeout(() => { isTransitioning.current = false; }, 100);
     }
-  }, [drama, navigate, dramaId]);
+  }, [drama, navigate, dramaId, isNavigating]);
 
   const onTouchStart = (e) => {
     if (e.touches.length === 1) {
       touchStartY.current = e.touches[0].clientY;
+      touchStartX.current = e.touches[0].clientX;
       touchStartTime.current = Date.now();
     }
   };
 
   const onTouchMove = (e) => {
-    if (touchStartY.current === null || e.touches.length > 1) return;
+    if (e.touches.length > 1) return;
+    e.preventDefault();
 
     const currentY = e.touches[0].clientY;
+    const currentX = e.touches[0].clientX;
     const deltaY = currentY - touchStartY.current;
+    const deltaX = currentX - touchStartX.current;
     const deltaTime = Date.now() - touchStartTime.current;
 
     const screenHeight = window.innerHeight;
 
-    if (Math.abs(deltaY) > screenHeight * 0.08 && deltaTime < 400) {
+    if (Math.abs(deltaY) > screenHeight * 0.05 && deltaTime < 400) {
       if (deltaY < 0 && currentIndex < drama?.episodes?.length - 1) {
         goToEpisode(currentIndex + 1);
       } else if (deltaY > 0 && currentIndex > 0) {
         goToEpisode(currentIndex - 1);
       }
       touchStartY.current = null;
+      touchStartX.current = null;
       return;
     }
 
-    if (Math.abs(deltaY) > 30 && Math.abs(deltaY) > Math.abs(deltaY * 0.5)) {
+    if (Math.abs(deltaY) > 30 && Math.abs(deltaY) > Math.abs(deltaX * 0.5)) {
       if (e.touches[0].clientX > window.innerWidth * 0.4) {
         const newVol = Math.max(0, Math.min(1, volume - deltaY / 150));
         setVolume(newVol);
@@ -232,6 +210,7 @@ export default function PlayerPage() {
 
   const onTouchEnd = () => {
     touchStartY.current = null;
+    touchStartX.current = null;
     touchStartTime.current = null;
     if (fastForwardRef.current) {
       clearTimeout(fastForwardRef.current);
@@ -279,16 +258,36 @@ export default function PlayerPage() {
     );
   }
 
-  if (!drama) {
-    return <div style={styles.container}><video ref={videoRef} style={styles.video} playsInline onEnded={handleVideoEnded} onTimeUpdate={handleTimeUpdate} onLoadedMetadata={() => videoRef.current?.play()} /></div>;
+  if (!drama || !streamUrl) {
+    return (
+      <div style={styles.container}>
+        <div style={styles.loadingContainer}>
+          <div style={styles.loadingSpinner} />
+        </div>
+      </div>
+    );
   }
 
   const episode = drama?.episodes?.[currentIndex];
-  const hasNext = currentIndex < drama?.episodes?.length - 1;
 
   return (
-    <div ref={containerRef} style={styles.container} onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd} onClick={onClick}>
-      <video ref={videoRef} style={styles.video} playsInline onEnded={handleVideoEnded} onTimeUpdate={handleTimeUpdate} onLoadedMetadata={() => videoRef.current?.play()} onWaiting={() => setIsPlaying(false)} onPlaying={() => setIsPlaying(true)} />
+    <div style={styles.container} onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd} onClick={onClick}>
+      <video
+        ref={videoRef}
+        style={styles.video}
+        playsInline
+        onEnded={handleVideoEnded}
+        onTimeUpdate={handleTimeUpdate}
+        onWaiting={() => setIsPlaying(false)}
+        onPlaying={() => setIsPlaying(true)}
+      />
+
+      {isNavigating && (
+        <div style={styles.transitionOverlay}>
+          <div style={styles.loadingSpinner} />
+          <div style={styles.transitionText}>Memuat Episode...</div>
+        </div>
+      )}
 
       <div style={styles.watermarkCenter}>
         <span style={styles.watermarkText}>IBRA</span>
@@ -297,26 +296,12 @@ export default function PlayerPage() {
 
       <img src="/logo.png" alt="IBRA" style={styles.logoCorner} />
 
-      {!isPlaying && (
+      {!isPlaying && !isNavigating && (
         <div style={styles.centerContent}>
           <div style={styles.playBtnCircle}>
             <svg width="48" height="48" viewBox="0 0 24 24" fill="white" style={{ marginLeft: 4 }}>
               <path d="M8 5v14l11-7z" />
             </svg>
-          </div>
-        </div>
-      )}
-
-      {autoPlayCount !== null && (
-        <div style={styles.autoPlayOverlay} onClick={handleCancelAutoPlay}>
-          <div style={styles.autoPlayContent}>
-            <div style={styles.autoPlayNextLabel}>Episode Berikutnya</div>
-            <div style={styles.autoPlayNextNum}>{nextEpisodeNum}</div>
-            <div style={styles.autoPlayCountdown}>
-              <span style={styles.autoPlayCountNum}>{autoPlayCount}</span>
-              <span style={styles.autoPlayCountText}>detik</span>
-            </div>
-            <div style={styles.autoPlayHint}>Tap untuk membatalkan</div>
           </div>
         </div>
       )}
@@ -405,6 +390,39 @@ const styles = {
     height: '100%',
     objectFit: 'cover',
   },
+  loadingContainer: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: 16,
+  },
+  loadingSpinner: {
+    width: 40,
+    height: 40,
+    border: '3px solid rgba(255,255,255,0.3)',
+    borderTopColor: '#e50914',
+    borderRadius: '50%',
+    animation: 'spin 1s linear infinite',
+  },
+  transitionOverlay: {
+    position: 'absolute',
+    inset: 0,
+    backgroundColor: '#000',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 16,
+    zIndex: 10,
+  },
+  transitionText: {
+    color: '#fff',
+    fontSize: 14,
+  },
   centerContent: {
     position: 'absolute',
     top: '50%',
@@ -472,53 +490,6 @@ const styles = {
     height: 40,
     objectFit: 'contain',
     zIndex: 10,
-  },
-  autoPlayOverlay: {
-    position: 'absolute',
-    inset: 0,
-    backgroundColor: 'rgba(0,0,0,0.9)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    zIndex: 100,
-  },
-  autoPlayContent: {
-    textAlign: 'center',
-    color: '#fff',
-  },
-  autoPlayNextLabel: {
-    fontSize: 14,
-    color: 'rgba(255,255,255,0.6)',
-    marginBottom: 8,
-    textTransform: 'uppercase',
-    letterSpacing: 2,
-  },
-  autoPlayNextNum: {
-    fontSize: 32,
-    fontWeight: 600,
-    marginBottom: 24,
-    color: 'rgba(255,255,255,0.9)',
-  },
-  autoPlayCountdown: {
-    display: 'flex',
-    alignItems: 'baseline',
-    justifyContent: 'center',
-    gap: 4,
-  },
-  autoPlayCountNum: {
-    fontSize: 80,
-    fontWeight: 'bold',
-    color: '#e50914',
-    lineHeight: 1,
-  },
-  autoPlayCountText: {
-    fontSize: 18,
-    color: 'rgba(255,255,255,0.6)',
-  },
-  autoPlayHint: {
-    fontSize: 13,
-    color: 'rgba(255,255,255,0.4)',
-    marginTop: 32,
   },
   topBar: {
     position: 'absolute',
