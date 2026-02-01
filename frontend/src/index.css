@@ -1,0 +1,157 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  min-height: 100%;
+  background-color: #0a0a0a;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+input, textarea {
+  font-family: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+.slide-down {
+  animation: slideDown 0.3s ease-out;
+}
+
+.scale-in {
+  animation: scaleIn 0.25s ease-out;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton-card {
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.skeleton-card img,
+.skeleton-card > div:first-child {
+  width: 100%;
+  display: block;
+}
+
+/* Responsive Grid */
+@media (max-width: 360px) {
+  .episode-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (min-width: 361px) and (max-width: 480px) {
+  .episode-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .episode-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .episode-grid {
+    grid-template-columns: repeat(5, 1fr) !important;
+  }
+}
+
+/* Card overflow prevention */
+.card-grid {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.card-grid > * {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.card-grid img {
+  object-fit: cover;
+  aspect-ratio: 2/3;
+}
