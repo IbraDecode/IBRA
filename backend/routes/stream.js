@@ -29,8 +29,40 @@ function generateSecureStreamUrl(videoUrl, sessionToken) {
   };
 }
 
+function decodeVideoUrl(encodedUrl) {
+  if (!encodedUrl) return '';
+  try {
+    if (encodedUrl.startsWith('aHR0c')) {
+      return Buffer.from(encodedUrl, 'base64').toString('utf-8');
+    }
+    return encodedUrl;
+  } catch {
+    return encodedUrl;
+  }
+}
+
 async function fetchStreamUrl(videoId) {
-  const response = await fetch(`${MELOLO_API_BASE}/stream/${videoId}`);
+  let vid = videoId;
+
+  if (videoId.includes('_')) {
+    const dramaId = videoId.split('_')[0];
+    const episodeIndex = parseInt(videoId.split('_')[1]);
+
+    try {
+      const detailResponse = await fetch(`${MELOLO_API_BASE}/detail/${dramaId}`);
+      if (detailResponse.ok) {
+        const detailData = await detailResponse.json();
+        const videoData = detailData.data?.video_data?.video_list || [];
+        if (videoData[episodeIndex]) {
+          vid = videoData[episodeIndex].vid;
+        }
+      }
+    } catch (e) {
+      console.error('Failed to fetch detail for vid mapping:', e);
+    }
+  }
+
+  const response = await fetch(`${MELOLO_API_BASE}/stream/${vid}`);
   if (!response.ok) {
     throw new Error(`Stream API Error: ${response.status}`);
   }
@@ -67,7 +99,24 @@ router.get('/episode/:episodeId', async (req, res) => {
     }
 
     const streamData = await fetchStreamUrl(episodeId);
-    const secureStream = generateSecureStreamUrl(streamData.url, sessionToken);
+    
+    let videoUrl = '';
+    let qualities = [];
+    
+    if (streamData.code === 0 && streamData.data) {
+      const mainUrl = streamData.data.main_url;
+      videoUrl = decodeVideoUrl(mainUrl);
+      
+      const videoList = streamData.data.video_list || {};
+      qualities = Object.keys(videoList).map(key => ({
+        definition: videoList[key].definition,
+        bitrate: videoList[key].bitrate,
+        width: videoList[key].vwidth,
+        height: videoList[key].vheight
+      }));
+    }
+    
+    const secureStream = generateSecureStreamUrl(videoUrl, sessionToken);
 
     db.prepare(`
       INSERT INTO analytics (event_type, drama_id, episode_id, timestamp, metadata)
@@ -80,7 +129,7 @@ router.get('/episode/:episodeId', async (req, res) => {
     res.json({
       success: true,
       ...secureStream,
-      quality_options: streamData.quality_options || ['auto']
+      qualities: qualities
     });
   } catch (error) {
     console.error('Stream error:', error);
