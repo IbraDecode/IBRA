@@ -34,7 +34,7 @@ export default function LoadingSpinner({ fullScreen, size = 'medium' }) {
         width: spinnerSize,
         height: spinnerSize,
         border: '3px solid #222',
-        borderTopColor: '#c9a227',
+        borderTopColor: '#e50914',
         borderRadius: '50%',
         animation: 'spin 0.8s linear infinite'
       }} />

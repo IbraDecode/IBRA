@@ -40,9 +40,10 @@ async function fetchStreamUrl(videoId) {
 router.get('/episode/:episodeId', async (req, res) => {
   try {
     const { episodeId } = req.params;
-    const { session_token, device_id } = req.query;
+    const sessionToken = req.headers['x-session-token'] || req.query.session_token;
+    const deviceId = req.headers['x-device-id'] || req.query.device_id;
 
-    if (!session_token) {
+    if (!sessionToken) {
       return res.status(401).json({ error: 'Sesi diperlukan' });
     }
 
@@ -54,7 +55,7 @@ router.get('/episode/:episodeId', async (req, res) => {
     const db = getDb();
     const session = db.prepare(`
       SELECT * FROM user_preferences WHERE key = ?
-    `).get(`session_${session_token}`);
+    `).get(`session_${sessionToken}`);
 
     if (!session) {
       return res.status(401).json({ error: 'Sesi tidak valid' });
@@ -66,7 +67,7 @@ router.get('/episode/:episodeId', async (req, res) => {
     }
 
     const streamData = await fetchStreamUrl(episodeId);
-    const secureStream = generateSecureStreamUrl(streamData.url, session_token);
+    const secureStream = generateSecureStreamUrl(streamData.url, sessionToken);
 
     db.prepare(`
       INSERT INTO analytics (event_type, drama_id, episode_id, timestamp, metadata)

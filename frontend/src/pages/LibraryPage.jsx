@@ -139,7 +139,8 @@ function PageContainer({ children }) {
       height: '100%',
       display: 'flex',
       flexDirection: 'column',
-      backgroundColor: '#0a0a0a'
+      backgroundColor: '#0a0a0a',
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif'
     }}>
       {children}
     </div>
@@ -203,8 +204,8 @@ function Tabs({ active, onChange }) {
             padding: '14px',
             background: 'none',
             border: 'none',
-            borderBottom: active === tab.id ? '2px solid #c9a227' : '2px solid transparent',
-            color: active === tab.id ? '#c9a227' : '#666',
+            borderBottom: active === tab.id ? '2px solid #e50914' : '2px solid transparent',
+            color: active === tab.id ? '#e50914' : '#666',
             fontSize: '14px',
             fontWeight: '600',
             cursor: 'pointer',
@@ -297,7 +298,7 @@ function LibraryItem({ item, onClick, onDelete, showProgress, progress }) {
             <div style={{
               width: `${progress}%`,
               height: '100%',
-              backgroundColor: '#c9a227'
+              backgroundColor: '#e50914'
             }} />
           </div>
         )}
@@ -320,7 +321,7 @@ function LibraryItem({ item, onClick, onDelete, showProgress, progress }) {
           {item.last_watched ? ` • ${formatTime(item.last_watched)}` : ''}
         </p>
         {showProgress && (
-          <p style={{ fontSize: '11px', color: '#c9a227', marginTop: '4px' }}>
+          <p style={{ fontSize: '11px', color: '#e50914', marginTop: '4px' }}>
             Episode {item.episode_index + 1} • {Math.round(progress)}%
           </p>
         )}
@@ -388,7 +389,7 @@ function ConfirmDialog({ title, message, confirmText, cancelText, onConfirm, onC
             style={{
               flex: 1,
               padding: '12px',
-              backgroundColor: '#c9a227',
+              backgroundColor: '#e50914',
               border: 'none',
               borderRadius: '8px',
               color: '#000',

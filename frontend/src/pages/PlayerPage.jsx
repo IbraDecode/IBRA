@@ -259,13 +259,14 @@ export default function PlayerPage() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif'
       }}>
         <div className="spinner" style={{
           width: '48px',
           height: '48px',
           border: '3px solid #333',
-          borderTopColor: '#c9a227',
+          borderTopColor: '#e50914',
           borderRadius: '50%',
           animation: 'spin 0.8s linear infinite'
         }} />
@@ -284,14 +285,15 @@ export default function PlayerPage() {
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
-        padding: '32px'
+        padding: '32px',
+        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif'
       }}>
         <p style={{ color: '#ff4444', marginBottom: '16px' }}>{error}</p>
         <button
           onClick={() => navigate(`/detail/${dramaId}`)}
           style={{
             padding: '12px 24px',
-            backgroundColor: '#c9a227',
+            backgroundColor: '#e50914',
             border: 'none',
             borderRadius: '8px',
             color: '#000',
@@ -347,7 +349,7 @@ export default function PlayerPage() {
           width: '48px',
           height: '48px',
           border: '3px solid rgba(255,255,255,0.2)',
-          borderTopColor: '#c9a227',
+          borderTopColor: '#e50914',
           borderRadius: '50%',
           animation: 'spin 0.8s linear infinite'
         }} />
@@ -478,7 +480,7 @@ function PlayerControls({
           width: '64px',
           height: '64px',
           borderRadius: '50%',
-          backgroundColor: '#c9a227',
+          backgroundColor: '#e50914',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center'
@@ -535,7 +537,7 @@ function PlayerControls({
               top: 0,
               bottom: 0,
               width: `${progress}%`,
-              backgroundColor: '#c9a227',
+              backgroundColor: '#e50914',
               borderRadius: '2px'
             }} />
             <div style={{
@@ -545,7 +547,7 @@ function PlayerControls({
               transform: 'translate(-50%, -50%)',
               width: '12px',
               height: '12px',
-              backgroundColor: '#c9a227',
+              backgroundColor: '#e50914',
               borderRadius: '50%'
             }} />
           </div>
@@ -595,7 +597,7 @@ function PlayerControls({
                 padding: '10px 16px',
                 backgroundColor: playbackRate === speed ? 'rgba(201, 162, 39, 0.2)' : 'transparent',
                 border: 'none',
-                color: playbackRate === speed ? '#c9a227' : '#fff',
+                color: playbackRate === speed ? '#e50914' : '#fff',
                 fontSize: '14px',
                 cursor: 'pointer',
                 textAlign: 'center'

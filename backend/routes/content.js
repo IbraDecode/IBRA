@@ -184,6 +184,10 @@ router.get('/image', async (req, res) => {
     res.send(webpBuffer);
   } catch (error) {
     console.error('Image proxy error:', error.message);
+    const { url } = req.query;
+    if (url && (error.message.includes('403') || error.message.includes('Failed to fetch'))) {
+      return res.redirect(decodeURIComponent(url));
+    }
     res.status(500).json({ error: 'Gagal memuat gambar' });
   }
 });

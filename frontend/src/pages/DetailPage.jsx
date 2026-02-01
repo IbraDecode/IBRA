@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { fetchDetail, addFavorite, removeFavorite, getHistory } from '../services/api';
 import { SkeletonText } from '../components/LoadingSpinner';
-import FavoriteIcon, { BackIcon, PlayIcon } from '../components/Icons';
+import { FavoriteIcon, BackIcon, PlayIcon } from '../components/Icons';
 import OptimizedImage, { HeroImage, usePrefetch } from '../components/OptimizedImage';
 
 export default function DetailPage() {
@@ -116,6 +116,21 @@ export default function DetailPage() {
           flexDirection: 'column',
           padding: '32px'
         }}>
+          <div style={{
+            width: '80px',
+            height: '80px',
+            borderRadius: '50%',
+            backgroundColor: 'rgba(229, 9, 20, 0.15)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginBottom: '24px'
+          }}>
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#e50914" strokeWidth="2">
+              <path d="M12 9v4M12 17h.01" />
+              <path d="M12 2L1 21h22L12 2z" />
+            </svg>
+          </div>
           <h2 style={{ fontSize: '24px', fontWeight: '600', color: '#fff', marginBottom: '16px' }}>
             Konten Dewasa
           </h2>
@@ -125,14 +140,23 @@ export default function DetailPage() {
           <button
             onClick={handleConfirmAge}
             style={{
-              padding: '12px 32px',
-              backgroundColor: '#c9a227',
+              padding: '14px 32px',
+              backgroundColor: '#e50914',
               border: 'none',
-              borderRadius: '8px',
-              color: '#000',
-              fontSize: '16px',
+              borderRadius: '25px',
+              color: '#fff',
+              fontSize: '15px',
               fontWeight: '600',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              transition: 'all 0.2s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = '#b20710';
+              e.target.style.transform = 'scale(1.02)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = '#e50914';
+              e.target.style.transform = 'scale(1)';
             }}
           >
             Saya berusia 18 tahun atau lebih
@@ -195,7 +219,7 @@ export default function DetailPage() {
               backgroundColor: '#1a1a1a',
               borderRadius: '12px',
               fontSize: '11px',
-              color: '#c9a227'
+              color: '#e50914'
             }}>
               {cat.name}
             </span>
@@ -255,17 +279,17 @@ function DetailHeader({ cover, title, onBack, isFavorite, onToggleFavorite, load
       }}>
         <button onClick={onBack} style={{
           width: '40px', height: '40px', borderRadius: '50%',
-          backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center',
-          justifyContent: 'center', border: 'none', cursor: 'pointer'
+          backgroundColor: 'rgba(0,0,0,0.6)', display: 'flex', alignItems: 'center',
+          justifyContent: 'center', border: 'none', cursor: 'pointer', color: '#fff'
         }}>
           <BackIcon size={20} />
         </button>
         {!loading && (
           <button onClick={onToggleFavorite} style={{
             width: '40px', height: '40px', borderRadius: '50%',
-            backgroundColor: isFavorite ? 'rgba(201, 162, 39, 0.2)' : 'rgba(0,0,0,0.5)',
+            backgroundColor: isFavorite ? 'rgba(229, 9, 20, 0.2)' : 'rgba(0,0,0,0.6)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            border: 'none', cursor: 'pointer'
+            border: 'none', cursor: 'pointer', color: '#fff'
           }}>
             <FavoriteIcon filled={isFavorite} size={20} />
           </button>
@@ -278,9 +302,10 @@ function DetailHeader({ cover, title, onBack, isFavorite, onToggleFavorite, load
 function PlayButton({ onClick, hasProgress }) {
   return (
     <button onClick={onClick} style={{
-      width: '100%', padding: '14px', backgroundColor: '#c9a227', border: 'none',
-      borderRadius: '12px', color: '#000', fontSize: '15px', fontWeight: '600',
-      cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px'
+      width: '100%', padding: '14px', backgroundColor: '#e50914', border: 'none',
+      borderRadius: '25px', color: '#fff', fontSize: '15px', fontWeight: '600',
+      cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
+      transition: 'all 0.2s ease'
     }}>
       <PlayIcon size={18} />
       {hasProgress ? 'Lanjutkan Menonton' : 'Mulai Nonton'}
@@ -321,7 +346,7 @@ function EpisodeList({ episodes, currentEpisodeId, onSelect, prefetch }) {
               />
             </div>
             <div style={{ flex: 1 }}>
-              <div style={{ fontSize: '14px', fontWeight: '500', color: isCurrent ? '#c9a227' : '#fff', marginBottom: '4px' }}>
+              <div style={{ fontSize: '14px', fontWeight: '500', color: isCurrent ? '#e50914' : '#fff', marginBottom: '4px' }}>
                 Episode {episode.index}
               </div>
               <div style={{ fontSize: '12px', color: '#666' }}>
@@ -329,7 +354,7 @@ function EpisodeList({ episodes, currentEpisodeId, onSelect, prefetch }) {
               </div>
             </div>
             {isCurrent && (
-              <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#c9a227' }} />
+              <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#e50914' }} />
             )}
           </button>
         );
@@ -340,7 +365,12 @@ function EpisodeList({ episodes, currentEpisodeId, onSelect, prefetch }) {
 
 function PageContainer({ children }) {
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#0a0a0a', color: '#fff' }}>
+    <div style={{ 
+      minHeight: '100vh', 
+      backgroundColor: '#0a0a0a', 
+      color: '#fff',
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif'
+    }}>
       {children}
     </div>
   );

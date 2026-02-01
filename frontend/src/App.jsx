@@ -128,7 +128,7 @@ function BottomNavigation() {
               padding: '8px 16px',
               background: 'none',
               border: 'none',
-              color: isActive ? '#c9a227' : '#666',
+              color: isActive ? '#e50914' : '#666',
               transition: 'color 0.2s'
             }}
           >

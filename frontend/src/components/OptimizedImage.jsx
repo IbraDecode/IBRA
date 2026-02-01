@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { getOptimizedImageUrl } from '../services/api';
+import heic2any from 'heic2any';
 
 export default function OptimizedImage({ 
   src, 
@@ -13,10 +14,13 @@ export default function OptimizedImage({
 }) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [isInView, setIsInView] = useState(false);
+  const [error, setError] = useState(false);
+  const [useOriginalUrl, setUseOriginalUrl] = useState(false);
+  const [useHeicBlob, setUseHeicBlob] = useState(false);
+  const [heicBlobUrl, setHeicBlobUrl] = useState(null);
   const imgRef = useRef(null);
   const observerRef = useRef(null);
 
-  // Intersection Observer for lazy loading
   useEffect(() => {
     if (priority || typeof IntersectionObserver === 'undefined') {
       setIsInView(true);
@@ -50,10 +54,45 @@ export default function OptimizedImage({
   }, [priority]);
 
   const imageUrl = getOptimizedImageUrl(src, width);
+  const isHeic = src?.toLowerCase().endsWith('.heic') || src?.toLowerCase().includes('.heic?');
 
   const handleLoad = useCallback(() => {
     setImageLoaded(true);
   }, []);
+
+  const convertHeicToBlob = useCallback(async () => {
+    if (!src || !isHeic) return null;
+    try {
+      const response = await fetch(src);
+      if (!response.ok) return null;
+      const blob = await response.blob();
+      const convertedBlob = await heic2any({ blob, toType: 'image/jpeg', quality: 0.8 });
+      return URL.createObjectURL(convertedBlob);
+    } catch (err) {
+      console.error('HEIC conversion error:', err);
+      return null;
+    }
+  }, [src, isHeic]);
+
+  const handleError = useCallback(async () => {
+    if (!useOriginalUrl && !useHeicBlob) {
+      setUseOriginalUrl(true);
+      setError(false);
+    } else if (useOriginalUrl && isHeic && !useHeicBlob) {
+      setUseHeicBlob(true);
+      const blobUrl = await convertHeicToBlob();
+      if (blobUrl) {
+        setHeicBlobUrl(blobUrl);
+        setError(false);
+      } else {
+        setError(true);
+      }
+    } else {
+      setError(true);
+    }
+  }, [useOriginalUrl, useHeicBlob, isHeic, convertHeicToBlob]);
+
+  const finalUrl = useHeicBlob ? heicBlobUrl : (useOriginalUrl ? src : imageUrl);
 
   return (
     <div
@@ -67,8 +106,7 @@ export default function OptimizedImage({
       className={className}
       onClick={onClick}
     >
-      {/* Skeleton placeholder */}
-      {placeholder && !imageLoaded && (
+      {placeholder && !imageLoaded && !error && (
         <div className="skeleton" style={{
           position: 'absolute',
           inset: 0,
@@ -78,10 +116,24 @@ export default function OptimizedImage({
         }} />
       )}
       
-      {/* Actual image */}
-      {isInView && (
+      {error && (
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: '#2a2a2a',
+          color: '#666',
+          fontSize: '12px'
+        }}>
+          Gambar tidak tersedia
+        </div>
+      )}
+
+      {isInView && !error && (
         <img
-          src={imageUrl}
+          src={finalUrl}
           alt={alt}
           width={width}
           height={style.height || 'auto'}
@@ -89,6 +141,7 @@ export default function OptimizedImage({
           decoding="async"
           fetchPriority={priority ? 'high' : 'auto'}
           onLoad={handleLoad}
+          onError={handleError}
           style={{
             width: '100%',
             height: '100%',

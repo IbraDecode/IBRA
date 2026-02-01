@@ -10,8 +10,8 @@ export function FavoriteIcon({ filled = false, size = 24, onClick }) {
       width={size}
       height={size}
       viewBox="0 0 24 24"
-      fill={filled ? '#c9a227' : 'none'}
-      stroke={filled ? '#c9a227' : '#fff'}
+      fill={filled ? '#e50914' : 'none'}
+      stroke={filled ? '#e50914' : '#fff'}
       strokeWidth="2"
       onClick={onClick}
       style={{ cursor: onClick ? 'pointer' : 'default' }}
@@ -139,7 +139,7 @@ export function HomeIcon({ size = 24, active = false, onClick }) {
       stroke="currentColor"
       strokeWidth="2"
       onClick={onClick}
-      style={{ cursor: onClick ? 'pointer' : 'default', color: active ? '#c9a227' : '#666' }}
+      style={{ cursor: onClick ? 'pointer' : 'default', color: active ? '#e50914' : '#666' }}
     >
       <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
       <polyline points="9 22 9 12 15 12 15 22" />
@@ -157,7 +157,7 @@ export function LibraryIcon({ size = 24, active = false, onClick }) {
       stroke="currentColor"
       strokeWidth="2"
       onClick={onClick}
-      style={{ cursor: onClick ? 'pointer' : 'default', color: active ? '#c9a227' : '#666' }}
+      style={{ cursor: onClick ? 'pointer' : 'default', color: active ? '#e50914' : '#666' }}
     >
       <rect x="2" y="2" width="20" height="20" rx="2" />
       <path d="M8 6h8M8 12h8M8 18h4" />

@@ -4,6 +4,14 @@ import { fetchLatest, fetchTrending, fetchRecommendations } from '../services/ap
 import { SkeletonCard } from '../components/LoadingSpinner';
 import OptimizedImage, { HeroImage, usePrefetch } from '../components/OptimizedImage';
 
+const styles = `
+  @media (min-width: 480px) {
+    .drama-grid {
+      grid-template-columns: repeat(3, 1fr) !important;
+    }
+  }
+`;
+
 export default function HomePage() {
   const navigate = useNavigate();
   const [latest, setLatest] = useState([]);
@@ -91,8 +99,10 @@ export default function HomePage() {
   }
 
   return (
-    <PageContainer ref={containerRef}>
-      <PageHeader onRefresh={handleRefresh} refreshing={refreshing} />
+    <>
+      <style>{styles}</style>
+      <PageContainer>
+      <PageHeader />
 
       <HeroCarousel items={latest} onNavigate={navigate} prefetch={prefetch} />
 
@@ -111,9 +121,9 @@ export default function HomePage() {
       </Section>
 
       <Section title="Episode Terbaru">
-        <div style={{ 
+        <div className="drama-grid" style={{ 
           display: 'grid', 
-          gridTemplateColumns: 'repeat(3, 1fr)', 
+          gridTemplateColumns: 'repeat(2, 1fr)', 
           gap: '8px', 
           padding: '0 16px',
           width: '100%',
@@ -145,6 +155,7 @@ export default function HomePage() {
         </div>
       </Section>
     </PageContainer>
+    </>
   );
 }
 
@@ -250,7 +261,7 @@ function HeroCarousel({ items, onNavigate, prefetch }) {
               width: index === current ? '20px' : '6px',
               height: '6px',
               borderRadius: '3px',
-              backgroundColor: index === current ? '#c9a227' : '#333',
+              backgroundColor: index === current ? '#e50914' : '#333',
               transition: 'all 0.3s ease',
               cursor: 'pointer'
             }}
@@ -322,64 +333,86 @@ function Section({ title, children }) {
   );
 }
 
-function PageContainer({ children, ref }) {
+function PageContainer({ children }) {
   return (
-    <div ref={ref} style={{
+    <div style={{
       width: '100%',
       minHeight: '100%',
       backgroundColor: '#0a0a0a',
       color: '#fff',
-      paddingBottom: '24px'
+      paddingBottom: '24px',
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif'
     }}>
       {children}
     </div>
   );
 }
 
-function PageHeader({ onRefresh, refreshing }) {
+function PageHeader() {
   const navigate = useNavigate();
 
   return (
     <header style={{
-      padding: '8px',
-      paddingTop: '16px',
+      padding: '16px',
       position: 'sticky',
       top: 0,
-      backgroundColor: 'rgba(10, 10, 10, 0.9)',
+      backgroundColor: 'rgba(10, 10, 10, 0.95)',
       backdropFilter: 'blur(10px)',
       zIndex: 10,
       borderBottom: '1px solid #1a1a1a'
     }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-        <img
-          src="/logo.png"
-          alt="IBRA"
-          style={{
-            width: '35px',
-            height: '35px'
-          }}
-        />
-        <div>
-          <h1 style={{ fontSize: '24px', fontWeight: '700', color: '#fff', margin: 0 }}>IBRA</h1>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <img
+            src="/logo.png"
+            alt="IBRA"
+            style={{
+              width: '40px',
+              height: '40px',
+              borderRadius: '8px'
+            }}
+          />
+          <div>
+            <h1 style={{ fontSize: '28px', fontWeight: '700', color: '#fff', margin: 0 }}>BRA</h1>
+            <div style={{ fontSize: '11px', color: '#888', marginTop: '2px', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif' }}>ndustri Bioskop Romansa Asia</div>
+          </div>
         </div>
+
         <form onSubmit={(e) => {
           e.preventDefault();
           const query = e.target.query.value.trim();
           if (query) navigate(`/search?q=${encodeURIComponent(query)}`);
-        }} style={{ marginLeft: 'auto', display: 'flex', gap: '8px' }}>
-          <input
-            name="query"
-            type="text"
-            placeholder="Cari drama..."
-            style={{
-              backgroundColor: '#1a1a1a',
-              border: '1px solid #333',
-              borderRadius: '8px',
-              padding: '8px 12px',
-              color: '#fff',
-              width: '200px'
-            }}
-          />
+        }} style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+          <div style={{ position: 'relative', width: '100%', maxWidth: '400px' }}>
+            <svg style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: '#888' }} width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="M21 21l-4.35-4.35" />
+            </svg>
+            <input
+              name="query"
+              type="text"
+              placeholder="Cari drama..."
+              style={{
+                backgroundColor: '#1a1a1a',
+                border: '1px solid #333',
+                borderRadius: '24px',
+                padding: '12px 16px 12px 44px',
+                color: '#fff',
+                width: '100%',
+                outline: 'none',
+                transition: 'all 0.2s ease',
+                fontSize: '14px'
+              }}
+              onFocus={(e) => {
+                e.target.style.borderColor = '#e50914';
+                e.target.style.boxShadow = '0 0 0 2px rgba(229, 9, 20, 0.2)';
+              }}
+              onBlur={(e) => {
+                e.target.style.borderColor = '#333';
+                e.target.style.boxShadow = 'none';
+              }}
+            />
+          </div>
         </form>
       </div>
     </header>

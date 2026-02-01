@@ -16,7 +16,7 @@ export default function SearchPage() {
     const saved = localStorage.getItem('ibra_recent_searches');
     return saved ? JSON.parse(saved) : [];
   });
-  const [suggestions, setSuggestions] = useState([]);
+  const [isInputFocused, setIsInputFocused] = useState(false);
 
   useEffect(() => {
     inputRef.current?.focus();
@@ -97,10 +97,11 @@ export default function SearchPage() {
   return (
     <div style={{
       width: '100%',
-      height: '100%',
+      minHeight: '100%',
       display: 'flex',
       flexDirection: 'column',
-      backgroundColor: '#0a0a0a'
+      backgroundColor: '#0a0a0a',
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif'
     }}>
       <header style={{
         padding: '16px',
@@ -109,37 +110,63 @@ export default function SearchPage() {
         borderBottom: '1px solid #1a1a1a'
       }}>
         <form onSubmit={handleSubmit} style={{
+          position: 'relative',
           display: 'flex',
-          alignItems: 'center',
-          gap: '12px',
-          backgroundColor: '#1a1a1a',
-          borderRadius: '12px',
-          padding: '12px 16px'
+          alignItems: 'center'
         }}>
-          <SearchIcon size={20} />
+          <div style={{
+            position: 'absolute',
+            left: '16px',
+            color: isInputFocused ? '#e50914' : '#666',
+            transition: 'color 0.2s ease'
+          }}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.35-4.35" />
+            </svg>
+          </div>
           <input
             ref={inputRef}
             type="text"
             value={query}
             onChange={handleQueryChange}
+            onFocus={() => setIsInputFocused(true)}
+            onBlur={() => setIsInputFocused(false)}
             placeholder="Cari drama..."
             style={{
               flex: 1,
-              background: 'none',
-              border: 'none',
-              outline: 'none',
+              background: '#1a1a1a',
+              border: `2px solid ${isInputFocused ? '#e50914' : '#333'}`,
+              borderRadius: '24px',
+              padding: '14px 44px 14px 48px',
               fontSize: '16px',
               color: '#fff',
-              caretColor: '#c9a227'
+              outline: 'none',
+              transition: 'all 0.2s ease'
             }}
           />
           {query && (
             <button
               type="button"
               onClick={() => setQuery('')}
-              style={{ padding: '4px' }}
+              style={{
+                position: 'absolute',
+                right: '12px',
+                padding: '6px',
+                borderRadius: '50%',
+                backgroundColor: '#333',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'background-color 0.2s ease'
+              }}
+              onMouseEnter={(e) => e.target.style.backgroundColor = '#444'}
+              onMouseLeave={(e) => e.target.style.backgroundColor = '#333'}
             >
-              <CloseIcon size={18} />
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
+                <circle cx="12" cy="12" r="10" />
+                <path d="m15 9-6 6M9 9l6 6" />
+              </svg>
             </button>
           )}
         </form>
@@ -148,7 +175,7 @@ export default function SearchPage() {
       <div style={{
         flex: 1,
         overflowY: 'auto',
-        padding: '16px 0'
+        padding: '20px 0'
       }}>
         {!hasSearched && query.length < 2 && (
           <RecentSearches
@@ -159,20 +186,41 @@ export default function SearchPage() {
         )}
 
         {loading && (
-          <div style={{ padding: '16px', textAlign: 'center', color: '#666' }}>
-            Sedang mencari...
+          <div style={{ 
+            display: 'flex', 
+            flexDirection: 'column',
+            alignItems: 'center', 
+            justifyContent: 'center',
+            padding: '60px 16px' 
+          }}>
+            <div style={{
+              width: '40px',
+              height: '40px',
+              border: '3px solid #1a1a1a',
+              borderTopColor: '#e50914',
+              borderRadius: '50%',
+              animation: 'spin 0.8s linear infinite'
+            }} />
+            <p style={{ color: '#666', marginTop: '16px', fontSize: '14px' }}>
+              Sedang mencari...
+            </p>
           </div>
         )}
 
         {!loading && hasSearched && results.length === 0 && query.length >= 2 && (
           <div style={{
-            padding: '40px 16px',
+            padding: '60px 16px',
             textAlign: 'center'
           }}>
-            <p style={{ color: '#666', marginBottom: '16px' }}>
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#333" strokeWidth="1.5" style={{ marginBottom: '16px' }}>
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.35-4.35" />
+              <path d="M8 8l6 6M14 8l-6 6" />
+            </svg>
+            <p style={{ color: '#888', marginBottom: '8px', fontSize: '16px' }}>
               Tidak ditemukan "{query}"
             </p>
-            <p style={{ color: '#444', fontSize: '12px' }}>
+            <p style={{ color: '#555', fontSize: '13px' }}>
               Coba gunakan kata kunci lain
             </p>
           </div>
@@ -181,12 +229,12 @@ export default function SearchPage() {
         {!loading && hasSearched && results.length > 0 && (
           <div>
             <p style={{ fontSize: '14px', color: '#888', marginBottom: '16px', padding: '0 16px' }}>
-              Hasil pencarian "{query}"
+              {results.length} hasil untuk "{query}"
             </p>
-            <div style={{
+            <div className="drama-grid" style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: '8px',
+              gridTemplateColumns: 'repeat(2, 1fr)',
+              gap: '12px',
               padding: '0 16px',
               boxSizing: 'border-box',
               minWidth: 0
@@ -203,6 +251,16 @@ export default function SearchPage() {
           </div>
         )}
       </div>
+      <style>{`
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+        @media (min-width: 480px) {
+          .drama-grid {
+            grid-template-columns: repeat(3, 1fr) !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }
@@ -216,7 +274,7 @@ function RecentSearches({ searches, onSelect, onClear }) {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: '12px'
+        marginBottom: '16px'
       }}>
         <span style={{ fontSize: '14px', fontWeight: '600', color: '#888' }}>
           Pencarian Terbaru
@@ -225,12 +283,13 @@ function RecentSearches({ searches, onSelect, onClear }) {
           onClick={onClear}
           style={{
             fontSize: '12px',
-            color: '#c9a227',
+            color: '#e50914',
             background: 'none',
-            border: 'none'
+            border: 'none',
+            cursor: 'pointer'
           }}
         >
-          Hapus
+          Hapus Semua
         </button>
       </div>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
@@ -239,15 +298,28 @@ function RecentSearches({ searches, onSelect, onClear }) {
             key={index}
             onClick={() => onSelect(term)}
             style={{
-              padding: '8px 16px',
+              padding: '10px 16px',
               backgroundColor: '#1a1a1a',
-              border: 'none',
+              border: '1px solid #333',
               borderRadius: '20px',
               color: '#ddd',
               fontSize: '13px',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              transition: 'all 0.2s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.borderColor = '#e50914';
+              e.target.style.color = '#e50914';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.borderColor = '#333';
+              e.target.style.color = '#ddd';
             }}
           >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ marginRight: '6px', verticalAlign: 'middle' }}>
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
             {term}
           </button>
         ))}
@@ -262,13 +334,16 @@ function SearchResultCard({ item, onClick }) {
       onClick={onClick}
       style={{
         cursor: 'pointer',
-        borderRadius: '8px',
+        borderRadius: '12px',
         overflow: 'hidden',
         backgroundColor: '#1a1a1a',
         aspectRatio: '2/3',
         minWidth: 0,
-        position: 'relative'
+        position: 'relative',
+        transition: 'transform 0.2s ease'
       }}
+      onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
+      onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
     >
       <OptimizedImage
         src={item.cover}
@@ -279,36 +354,38 @@ function SearchResultCard({ item, onClick }) {
       {item.age_gate >= 18 && (
         <div style={{
           position: 'absolute',
-          top: '4px',
-          right: '4px',
-          backgroundColor: 'rgba(200, 0, 0, 0.8)',
-          padding: '2px 4px',
-          borderRadius: '3px',
-          fontSize: '9px',
+          top: '8px',
+          right: '8px',
+          backgroundColor: 'rgba(200, 0, 0, 0.9)',
+          padding: '3px 8px',
+          borderRadius: '4px',
+          fontSize: '10px',
           fontWeight: '600',
           color: '#fff'
         }}>
           18+
         </div>
       )}
+      <div style={{
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        padding: '8px',
+        background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%)'
+      }}>
+        <p style={{
+          fontSize: '13px',
+          fontWeight: '500',
+          color: '#fff',
+          margin: 0,
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          whiteSpace: 'nowrap'
+        }}>
+          {item.title}
+        </p>
+      </div>
     </div>
-  );
-}
-
-function SearchIcon({ size }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="#666" strokeWidth="2">
-      <circle cx="11" cy="11" r="8" />
-      <path d="m21 21-4.35-4.35" />
-    </svg>
-  );
-}
-
-function CloseIcon({ size }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="#666" strokeWidth="2">
-      <circle cx="12" cy="12" r="10" />
-      <path d="m15 9-6 6M9 9l6 6" />
-    </svg>
   );
 }
