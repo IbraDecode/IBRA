@@ -5,6 +5,9 @@ This guide outlines essential development processes and conventions for maintain
 ## 1. Build, Lint, and Test Commands
 The following commands are used to build, lint, and test the IBRA project. Make sure to use these standards during development.
 
+### Information
+**Let me run the server so you just say please restart to make changes.**
+
 ### General Commands
 
 - **Install dependencies for both frontend and backend:**
