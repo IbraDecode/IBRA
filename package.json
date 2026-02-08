@@ -9,7 +9,13 @@
     "dev:frontend": "cd frontend && npm run dev",
     "build": "cd frontend && npm run build",
     "start": "cd backend && npm start",
-    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install"
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "production": "concurrently \"npm run production:backend\" \"npm run production:frontend\"",
+    "production:backend": "cd backend && npm run start:production",
+    "production:frontend": "cd frontend && npm run start:production",
+    "stop": "pkill -f \"node.*backend.*server.js\" && pkill -f \"vite\"",
+    "restart": "npm run stop && npm run production",
+    "status": "ps aux | grep -E 'node.*server|vite' | grep -v grep"
   },
   "keywords": ["drama", "streaming", "short-video", "entertainment"],
   "author": "Ibra Decode",

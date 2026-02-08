@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "node server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "start:production": "NODE_ENV=production node server.js"
   },
   "dependencies": {
     "better-sqlite3": "^9.4.3",
