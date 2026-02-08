@@ -15,9 +15,12 @@ function useThrottledCallback(callback, delay) {
 }
 
 function updateSEO({ title, description, image, episode, drama }) {
-  const fullTitle = `${drama?.title || 'Drama'} - Episode ${episode?.index || 1} | IBRA`;
-  const fullDesc = description || drama?.description?.slice(0, 160) || 'Nonton drama Asia berkualitas tinggi secara gratis di IBRA.';
-  const shareImage = image || drama?.cover || drama?.episodes?.[0]?.cover || '';
+  if (!drama) return;
+
+  const fullTitle = `${drama.title} - Episode ${episode?.index || 1} | IBRA`;
+  const fullDesc = description || drama.description?.slice(0, 160) || `Nonton ${drama.title} episode ${episode?.index || 1} secara gratis di IBRA. Drama Asia berkualitas tinggi dengan subtitle Indonesia.`;
+  const shareImage = image || episode?.cover || drama.cover || '';
+  const pageUrl = window.location.href;
 
   document.title = fullTitle;
 
@@ -26,13 +29,24 @@ function updateSEO({ title, description, image, episode, drama }) {
     'og:title': fullTitle,
     'og:description': fullDesc,
     'og:image': shareImage,
-    'og:url': window.location.href,
+    'og:image:width': '800',
+    'og:image:height': '450',
+    'og:image:alt': `${drama.title} - Episode ${episode?.index || 1}`,
+    'og:url': pageUrl,
+    'og:type': 'video.episode',
+    'og:site_name': 'IBRA',
+    'og:locale': 'id_ID',
+    'twitter:card': 'summary_large_image',
+    'twitter:site': '@ibradecode',
+    'twitter:creator': '@ibradecode',
     'twitter:title': fullTitle,
     'twitter:description': fullDesc,
     'twitter:image': shareImage,
+    'twitter:image:alt': `${drama.title} Episode`,
   };
 
   Object.entries(metaTags).forEach(([name, content]) => {
+    if (!content) return;
     let meta = document.querySelector(`meta[name="${name}"], meta[property="${name}"]`);
     if (!meta) {
       meta = document.createElement('meta');
@@ -45,26 +59,104 @@ function updateSEO({ title, description, image, episode, drama }) {
     }
     meta.setAttribute('content', content);
   });
+
+  const canonical = document.querySelector('link[rel="canonical"]');
+  if (canonical) {
+    canonical.setAttribute('href', pageUrl);
+  }
 }
 
-function generateStructuredData({ drama, episode }) {
+function generateStructuredData({ drama, episode, currentIndex }) {
   if (!drama) return null;
 
   return {
     '@context': 'https://schema.org',
     '@type': 'VideoObject',
     name: `${drama.title} - Episode ${episode?.index || 1}`,
-    description: drama.description?.slice(0, 500) || '',
-    thumbnailUrl: [episode?.cover || drama.over || ''].filter(Boolean),
+    alternativeHeadline: `${drama.title} Episode ${episode?.index || 1}`,
+    description: drama.description?.slice(0, 500) || `Episode ${episode?.index || 1} dari drama ${drama.title}`,
+    thumbnailUrl: episode?.cover || drama.cover || '',
     duration: episode?.duration ? `PT${Math.floor(episode.duration / 60)}M${episode.duration % 60}S` : '',
     uploadDate: new Date().toISOString(),
     contentUrl: window.location.href,
+    embedUrl: window.location.href,
+    accessibleForFree: 'https://schema.org/True',
+    interactionType: {
+      '@type': 'WatchAction',
+      name: 'Watch Episode',
+    },
     partOfSeries: {
       '@type': 'TVSeries',
+      '@id': `https://ibra.biz.id/detail/${drama.id}`,
       name: drama.title,
+      description: drama.description?.slice(0, 300) || '',
       numberOfEpisodes: drama.total_episodes,
+      episodeNumber: episode?.index || 1,
+      image: drama.cover || '',
     },
+    creator: {
+      '@type': 'Organization',
+      name: 'IBRA Decode',
+      url: 'https://ibra.biz.id',
+    },
+    producer: {
+      '@type': 'Organization',
+      name: 'IBRA',
+      url: 'https://ibra.biz.id',
+    },
+    genre: drama.categories?.map(c => c.name) || ['Drama Asia'],
+    keywords: `${drama.title}, episode ${episode?.index || 1}, drama ${drama.categories?.[0]?.name || 'asia'}, streaming gratis`,
   };
+}
+
+function generateBreadcrumbSchema({ drama, episode, currentIndex }) {
+  if (!drama) return null;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://ibra.biz.id/',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: drama.title.length > 30 ? drama.title.slice(0, 30) + '...' : drama.title,
+        item: `https://ibra.biz.id/detail/${drama.id}`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: `Episode ${episode?.index || currentIndex + 1}`,
+        item: window.location.href,
+      },
+    ],
+  };
+}
+
+function updateStructuredData({ drama, episode, currentIndex }) {
+  const existingScript = document.querySelector('script[type="application/ld+json"].dynamic-seo');
+  
+  const videoSchema = generateStructuredData({ drama, episode, currentIndex });
+  const breadcrumbSchema = generateBreadcrumbSchema({ drama, episode, currentIndex });
+
+  const combinedSchema = {
+    '@graph': [videoSchema, breadcrumbSchema].filter(Boolean),
+  };
+
+  if (existingScript) {
+    existingScript.textContent = JSON.stringify(combinedSchema, null, 2);
+  } else {
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.className = 'dynamic-seo';
+    script.textContent = JSON.stringify(combinedSchema, null, 2);
+    document.head.appendChild(script);
+  }
 }
 
 export default function PlayerPage() {
@@ -209,6 +301,20 @@ export default function PlayerPage() {
               }
             });
 
+            updateSEO({
+              title: null,
+              description: null,
+              image: null,
+              episode: currentEp,
+              drama: dramaData,
+            });
+
+            updateStructuredData({
+              drama: dramaData,
+              episode: currentEp,
+              currentIndex: idx,
+            });
+
             try {
               const streamRes = await fetchStream(episodeId);
               if (streamRes.success && streamRes.url) {
@@ -293,6 +399,24 @@ export default function PlayerPage() {
       }
     }
   }, [dramaId, episodeId, currentIndex, throttledReportProgress]);
+
+  useEffect(() => {
+    if (drama && drama.episodes[currentIndex]) {
+      const currentEp = drama.episodes[currentIndex];
+      updateSEO({
+        title: null,
+        description: null,
+        image: null,
+        episode: currentEp,
+        drama: drama,
+      });
+      updateStructuredData({
+        drama: drama,
+        episode: currentEp,
+        currentIndex: currentIndex,
+      });
+    }
+  }, [drama, currentIndex]);
 
   const handleSeek = useCallback((e) => {
     if (videoRef.current && videoRef.current.duration) {

@@ -12,6 +12,33 @@ const styles = `
   }
 `;
 
+function updateHomeSEO() {
+  document.title = 'IBRA - Industri Bioskop Romansa Asia | Streaming Drama Asia Gratis';
+
+  const metaTags = {
+    description: 'Nonton drama pendek Asia berkualitas tinggi tanpa login. IBRA - Industri Bioskop Romansa Asia dengan koleksi drama Korea, China, Thailand, dan Indonesia terbaru.',
+    'og:title': 'IBRA - Industri Bioskop Romansa Asia',
+    'og:description': 'Nonton drama pendek Asia tanpa login. Gratis streaming drama berkualitas tinggi.',
+    'og:image': 'https://ibra.biz.id/banner.png',
+    'twitter:title': 'IBRA - Industri Bioskop Romansa Asia',
+    'twitter:description': 'Nonton drama Asia gratis di IBRA',
+  };
+
+  Object.entries(metaTags).forEach(([name, content]) => {
+    let meta = document.querySelector(`meta[name="${name}"], meta[property="${name}"]`);
+    if (!meta) {
+      meta = document.createElement('meta');
+      if (name.startsWith('og:') || name.startsWith('twitter:')) {
+        meta.setAttribute('property', name);
+      } else {
+        meta.setAttribute('name', name);
+      }
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute('content', content);
+  });
+}
+
 export default function HomePage() {
   const navigate = useNavigate();
   const [latest, setLatest] = useState([]);
@@ -21,6 +48,10 @@ export default function HomePage() {
   const [refreshing, setRefreshing] = useState(false);
   const prefetch = usePrefetch();
   const containerRef = useRef(null);
+
+  useEffect(() => {
+    updateHomeSEO();
+  }, []);
 
   const loadContent = useCallback(async () => {
     try {

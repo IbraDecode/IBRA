@@ -1,0 +1,14 @@
+# Robots.txt for IBRA
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /rss/
+
+# Sitemap
+Sitemap: https://ibra.biz.id/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 10
+
+# Host
+Host: https://ibra.biz.id
