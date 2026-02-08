@@ -1,194 +1,182 @@
-# IBRA - Industri Bioskop Romansa Asia
+<div align="center">
 
-<p align="center">
-  <img src="/frontend/public/logo.png" alt="IBRA Logo" width="200">
-</p>
+# 🎬 IBRA - Industri Bioskop Romansa Asia
 
-<p align="center">
-  <img src="/frontend/public/banner.png" alt="IBRA Banner - Streaming Drama Asia Gratis" width="100%">
-</p>
+<img src="/frontend/public/logo.png" alt="IBRA Logo" width="180">
 
-<p align="center">
-  <strong>Platform Streaming Drama Asia Terbaik dan Gratis</strong>
-</p>
-
-<p align="center">
-  <a href="https://ibra.biz.id" target="_blank"><img src="https://img.shields.io/badge/Visit-IBRA-e50914?style=for-the-badge&logo=google-chrome" alt="Visit IBRA"></a>
-  <a href="#fitur-utama">Fitur</a> •
-  <a href="#teknologi">Teknologi</a> •
-  <a href="#instalasi">Instalasi</a> •
-  <a href="#penggunaan">Penggunaan</a> •
-  <a href="#struktur-proyek">Struktur</a> •
-  <a href="#api-dokumentasi">API</a> •
-  <a href="#seo-optimization">SEO</a> •
-  <a href="#lisensi">Lisensi</a>
-</p>
+<img src="/frontend/public/banner.png" alt="IBRA Banner" width="100%">
 
 ---
 
-<p align="center">
-  <img src="/frontend/public/banner.png" alt="IBRA - Nonton Drama Asia Gratis" width="100%">
-</p>
+### 🌟 Platform Streaming Drama Asia Terbaik & Gratis
+
+<a href="https://ibra.biz.id">
+  <img src="https://img.shields.io/badge/Website-IBRA-e50914?style=for-the-badge&logo=google-chrome" alt="Website">
+</a>
+<a href="https://instagram.com/ibradecode">
+  <img src="https://img.shields.io/badge/Instagram-ibradecode-E4405F?style=for-the-badge&logo=instagram" alt="Instagram">
+</a>
+<a href="https://tiktok.com/@ibradecode">
+  <img src="https://img.shields.io/badge/TikTok-ibradecode-000000?style=for-the-badge&logo=tiktok" alt="TikTok">
+</a>
+<a href="https://youtube.com/@IBRADecode">
+  <img src="https://img.shields.io/badge/YouTube-IBRADecode-FF0000?style=for-the-badge&logo=youtube" alt="YouTube">
+</a>
+<a href="https://wa.me/6285792820173">
+  <img src="https://img.shields.io/badge/WhatsApp-+6285792820173-25D366?style=for-the-badge&logo=whatsapp" alt="WhatsApp">
+</a>
+
+---
+
+<a href="#fitur-utama">✨ Fitur</a> •
+<a href="#teknologi">🛠 Teknologi</a> •
+<a href="#instalasi">📦 Install</a> •
+<a href="#penggunaan">🚀 Penggunaan</a> •
+<a href="#struktur-proyek">📁 Struktur</a> •
+<a href="#api-dokumentasi">🔌 API</a> •
+<a href="#seo-optimization">🌍 SEO</a> •
+<a href="#lisensi">📄 Lisensi</a>
+
+</div>
+
+---
+
+<img src="https://user-images.githubusercontent.com/74038190/216122041-518ac897-8d92-4c6b-9b3f-ca01dcaf38ee.png" width="100%" alt="Banner">
 
 ## 📱 IBRA - Platform Streaming Drama Asia
 
-IBRA (Industri Bioskop Romansa Asia) adalah platform streaming drama Asia terbaik dan gratis di Indonesia. Menyediakan koleksi lengkap drama dari Korea, China, Thailand, dan Indonesia dengan subtitle berkualitas tinggi.
+> **IBRA** (Industri Bioskop Romansa Asia) adalah platform streaming drama Asia terbaik dan gratis di Indonesia. Menyediakan koleksi lengkap drama dari Korea, China, Thailand, dan Indonesia dengan subtitle berkualitas tinggi.
 
 ### 🎯 Visi
 
 Memberikan akses streaming drama Asia berkualitas tinggi secara gratis untuk semua orang, tanpa hambatan login atau biaya tersembunyi.
 
-### 🎮 Demo
+### 🎮 Demo Links
 
-- **Production**: https://ibra.biz.id
-- **API**: https://api.ibra.biz.id
+- 🌐 **Website**: [https://ibra.biz.id](https://ibra.biz.id)
+- 🔌 **API**: [https://api.ibra.biz.id](https://api.ibra.biz.id)
 
 ---
 
+<div align="center">
+
+### ⭐ Key Features
+
+<img src="https://forthebadge.com/images/badges/built-with-love.svg" width="150" alt="Built with Love">
+<img src="https://forthebadge.com/images/badges/open-source.svg" width="130" alt="Open Source">
+<img src="https://forthebadge.com/images/badges/builtin-swag-bool%20swag.svg" width="130" alt="Built with Swag">
+<img src="https://img.shields.io/badge/Made%20with-Markdown-100000?style=for-the-badge&logo=markdown" alt="Markdown">
+
+---
+
+</div>
+
 ## ✨ Fitur Utama
 
-<p align="center">
-  <img src="/frontend/public/banner.png" alt="IBRA Features" width="100%">
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Free-100%25-e50914?style=flat-square&logo=freebsd" alt="Free">
-  <img src="https://img.shields.io/badge/No-Login-00C851?style=flat-square&logo=login" alt="No Login">
-  <img src="https://img.shields.io/badge/No-Ads-FF5722?style=flat-square&logo=google-ads" alt="No Ads">
-  <img src="https://img.shields.io/badge/PWA-Support-5A0FC8?style=flat-square&logo=pwa" alt="PWA">
-  <img src="https://img.shields.io/badge/SEO-Optimized-4CAF50?style=flat-square&logo=google" alt="SEO">
-</p>
-
 ### 🔓 Tanpa Login
-- Identitas perangkat menggantikan akun pengguna
-- Session token otomatis dibuat saat aplikasi dibuka
-- Privasi terjaga - tidak ada data pribadi yang disimpan
+- ✅ Identitas perangkat menggantikan akun pengguna
+- ✅ Session token otomatis dibuat saat aplikasi dibuka
+- ✅ Privasi terjaga - tidak ada data pribadi yang disimpan
 
 ### 🎬 Gratis 100%
-- Tidak ada biaya tersembunyi
-- Tidak ada iklan yang mengganggu
-- Tidak ada langganan
-- Selamanya gratis
+- ✅ Tidak ada biaya tersembunyi
+- ✅ Tidak ada iklan yang mengganggu
+- ✅ Tidak ada langganan
+- ✅ Selamanya gratis
 
 ### 📺 Koleksi Lengkap
-- **Drama Korea** - K-drama terbaru dan klasik
-- **Drama China** - C-drama dengan subtitle Indonesia
-- **Drama Thailand** - Thai drama BL, GL, dan romance
-- **Drama Indonesia** - Local drama berkualitas
+- 🎭 **Drama Korea** - K-drama terbaru dan klasik
+- 🇨🇳 **Drama China** - C-drama dengan subtitle Indonesia
+- 🇹🇭 **Drama Thailand** - Thai drama BL, GL, dan romance
+- 🇮🇩 **Drama Indonesia** - Local drama berkualitas
 
 ### 🎨 Kualitas Tinggi
-- Multiple quality: 360p, 480p, 720p, 1080p
-- Auto-detect koneksi untuk kualitas optimal
-- HEIC to WebP conversion
-- CDN加速 untuk loading cepat
+- 📺 Multiple quality: 360p, 480p, 720p, 1080p
+- 🔄 Auto-detect koneksi untuk kualitas optimal
+- 🖼️ HEIC to WebP conversion
+- ⚡ CDN加速 untuk loading cepat
 
 ### 🎮 Fitur Player
 - **Touch Gestures**:
-  - Double tap: Play/Pause
-  - Double tap kiri/kanan: Seek ±10 detik
-  - Hold zone kanan: 2x speed
-  - Swipe atas/bawah: Volume/Brightness
-  - Swipe kiri/kanan: Episode next/prev
-- **Auto-play** episode berikutnya
-- **Progress tracking** otomatis
-- **Bookmark** favorit
-- **Speed control** (0.5x - 2x)
-- **Chromecast** & **AirPlay** support
-- **Picture in Picture**
+  - 👆 Double tap: Play/Pause
+  - ⏪ Double tap kiri/kanan: Seek ±10 detik
+  - ✊ Hold zone kanan: 2x speed
+  - 📱 Swipe atas/bawah: Volume/Brightness
+  - ↔️ Swipe kiri/ kanan: Episode next/prev
+- ▶️ Auto-play episode berikutnya
+- 🕐 Speed control (0.5x - 2x)
+- 📺 Chromecast & AirPlay support
 
 ### 📱 Mobile Friendly
-- Fully responsive design
-- PWA support
-- Dark mode
-- Touch-optimized UI
-- Fast loading
+- 📱 Fully responsive design
+- 📲 PWA support
+- 🌙 Dark mode
+- 👆 Touch-optimized UI
 
 ### 🔍 Pencarian Cerdas
-- Real-time search dengan debounce
-- Filter by country, genre, category
-- Trending searches
-- Search history lokal
+- 🔎 Real-time search dengan debounce
+- 🏷️ Filter by country, genre, category
+- 🔥 Trending searches
+- 📜 Search history lokal
 
 ### 📊 Rekomendasi Personal
-- Algoritma based on watch history
-- "For You" section
-- Similar drama suggestions
-- Continue watching
+- 🧠 Algoritma based on watch history
+- 💖 "For You" section
+- 🎯 Similar drama suggestions
+- 📺 Continue watching
 
 ### 🔒 Keamanan
-- Silent device handshake
-- Temporary stream URLs (45s TTL)
-- Anti-suspicious device detection
-- Session-based authentication
+- 🤫 Silent device handshake
+- ⏰ Temporary stream URLs (45s TTL)
+- 🚫 Anti-suspicious device detection
+- 🔐 Session-based authentication
 
 ### 🌍 SEO Optimized
-- Complete meta tags (1000+ keywords)
-- Structured data (15+ schema types)
-- Open Graph & Twitter Cards
-- Video & News sitemaps
-- Multi-language support
+- 🏷️ Complete meta tags (1000+ keywords)
+- 📊 Structured data (15+ schema types)
+- 📱 Open Graph & Twitter Cards
+- 🎬 Video & News sitemaps
+- 🌐 Multi-language support
+
+---
+
+<div align="center">
+
+<img src="https://user-images.githubusercontent.com/74038190/216122041-518ac897-8d92-4c6b-9b3f-ca01dcaf38ee.png" width="100%" alt="Banner">
 
 ---
 
 ## 🛠 Teknologi
 
-<p align="center">
-  <img src="/frontend/public/banner.png" alt="IBRA Technology Stack" width="100%">
+<p>
+<img src="https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react" alt="React">
+<img src="https://img.shields.io/badge/Vite-5-646CFF?style=flat-square&logo=vite" alt="Vite">
+<img src="https://img.shields.io/badge/Node.js-18-339933?style=flat-square&logo=node.js" alt="Node.js">
+<img src="https://img.shields.io/badge/Express-4-000000?style=flat-square&logo=express" alt="Express">
+<img src="https://img.shields.io/badge/SQLite-3-003B57?style=flat-square&logo=sqlite" alt="SQLite">
 </p>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react" alt="React">
-  <img src="https://img.shields.io/badge/Vite-5-646CFF?style=flat-square&logo=vite" alt="Vite">
-  <img src="https://img.shields.io/badge/Node.js-18-339933?style=flat-square&logo=node.js" alt="Node.js">
-  <img src="https://img.shields.io/badge/Express-4-000000?style=flat-square&logo=express" alt="Express">
-  <img src="https://img.shields.io/badge/SQLite-3-003B57?style=flat-square&logo=sqlite" alt="SQLite">
+<p>
+<img src="https://img.shields.io/badge/JavaScript-ES2022-F7DF1E?style=flat-square&logo=javascript" alt="JavaScript">
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5" alt="HTML5">
+<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3" alt="CSS3">
+<img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git" alt="Git">
+<img src="https://img.shields.io/badge/Cloudflare-F38020?style=flat-square&logo=cloudflare" alt="Cloudflare">
 </p>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/JavaScript-ES2022-F7DF1E?style=flat-square&logo=javascript" alt="JavaScript">
-  <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5" alt="HTML5">
-  <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3" alt="CSS3">
-  <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git" alt="Git">
-  <img src="https://img.shields.io/badge/Cloudflare-F38020?style=flat-square&logo=cloudflare" alt="Cloudflare">
-</p>
-
-### Frontend
-- **React 18** - UI library
-- **Vite 5** - Build tool
-- **React Router 6** - Routing
-- **CSS-in-JS** - Styling
-- **PWA** - Progressive Web App
-
-### Backend
-- **Node.js** - Runtime
-- **Express 4** - Web framework
-- **Better-SQLite3** - Database
-- **UUID** - Unique identifiers
-- **CORS** - Cross-origin resources
-
-### DevOps
-- **NPM** - Package manager
-- **Concurrently** - Parallel execution
-- **Git** - Version control
-- **Cloudflare** - CDN & SSL
-
-### APIs
-- **MeloLo API** - Drama content provider
-- **Fizzopic CDN** - Image hosting
+</div>
 
 ---
 
 ## 📦 Instalasi
 
-<p align="center">
-  <img src="/frontend/public/banner.png" alt="Install IBRA" width="100%">
-</p>
+<img src="https://user-images.githubusercontent.com/74038190/216122041-518ac897-8d92-4c6b-9b3f-ca01dcaf38ee.png" width="100%" alt="Banner">
 
 ### Persyaratan
-- Node.js 18+
-- npm atau yarn
-- Git
-- Browser modern (Chrome, Firefox, Safari, Edge)
+- 🟢 Node.js 18+
+- 📦 npm atau yarn
+- 🐙 Git
+- 🌐 Browser modern (Chrome, Firefox, Safari, Edge)
 
 ### Clone Repository
 
@@ -207,7 +195,7 @@ npm run install:all
 # Atau install secara terpisah
 npm install                    # Root
 cd backend && npm install      # Backend
-cd ../frontend && npm install  # Frontend
+cd ../frontend && npm install # Frontend
 ```
 
 ### Environment Configuration
@@ -245,10 +233,7 @@ npm run production
 
 # Atau individual
 npm run production:backend   # Backend only
-npm run production:frontend  # Frontend only
-
-# Frontend: https://ibra.biz.id (via vite preview)
-# Backend:  https://api.ibra.biz.id
+npm run production:frontend # Frontend only
 ```
 
 ### Other Commands
@@ -256,7 +241,7 @@ npm run production:frontend  # Frontend only
 ```bash
 npm run stop        # Stop semua processes
 npm run restart     # Restart production
-npm run status      # Cek running processes
+npm run status     # Cek running processes
 ```
 
 ---
@@ -296,16 +281,11 @@ ibra/
 │   │   ├── logo.png
 │   │   ├── banner.png
 │   │   ├── favicon/
-│   │   │   ├── favicon.ico
-│   │   │   ├── apple-icon-*.png
-│   │   │   └── android-chrome-*.png
 │   │   ├── sitemap.xml           # XML sitemap
 │   │   ├── robots.txt            # Search engine rules
 │   │   ├── humans.txt            # Team credits
-│   │   ├── ads.txt               # Advertising transparency
+│   │   ├── ads.txt              # Advertising transparency
 │   │   ├── security.txt          # Security policy
-│   │   ├── browserconfig.xml    # IE/Edge config
-│   │   ├── privacy-policy.txt    # Privacy info
 │   │   └── .well-known/
 │   │       └── site.json         # Site metadata
 │   │
@@ -313,16 +293,13 @@ ibra/
 │       ├── main.jsx              # Entry point
 │       ├── App.jsx               # Router & Context
 │       ├── index.css             # Global styles
-│       │
 │       ├── services/
-│       │   └── api.js            # API client & functions
-│       │
+│       │   └── api.js           # API client & functions
 │       ├── components/
 │       │   ├── LoadingSpinner.jsx
 │       │   ├── OptimizedImage.jsx
 │       │   ├── BottomNavigation.jsx
 │       │   └── PageHeader.jsx
-│       │
 │       └── pages/
 │           ├── HomePage.jsx      # Home dengan sections
 │           ├── ForYouPage.jsx    # For you recommendations
@@ -350,24 +327,6 @@ ibra/
 | POST | `/api/client/validate` | Validasi sesi |
 | POST | `/api/client/refresh` | Perbarui sesi |
 
-**Request (handshake):**
-```json
-{
-  "device_fingerprint": "abc123...",
-  "timestamp": 1707400000000,
-  "app_version": "2.0.0"
-}
-```
-
-**Response:**
-```json
-{
-  "success": true,
-  "session_token": "uuid-v4",
-  "expires_in": 600
-}
-```
-
 ### Content API
 
 | Method | Endpoint | Description |
@@ -378,23 +337,6 @@ ibra/
 | GET | `/api/content/detail/:id` | Detail drama |
 | GET | `/api/content/recommendations` | Rekomendasi |
 
-**Response (latest):**
-```json
-{
-  "success": true,
-  "data": [
-    {
-      "id": "7595931008260639749",
-      "title": "Cinta di Luar Dugaan",
-      "cover": "https://...",
-      "total_episodes": 85,
-      "play_count": 1500000,
-      "digg_count": 85000
-    }
-  ]
-}
-```
-
 ### Stream API
 
 | Method | Endpoint | Description |
@@ -402,179 +344,35 @@ ibra/
 | GET | `/api/stream/episode/:id` | Stream URL |
 | POST | `/api/stream/report-progress` | Laporkan progres |
 
-**Headers Required:**
-```
-X-Session-Token: <session_token>
-X-Device-Id: <device_id>
-```
-
-### Local API
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET/POST | `/api/local/history` | Riwayat menonton |
-| GET/POST | `/api/local/favorites` | Daftar favorit |
-| GET/POST | `/api/local/preferences` | Preferensi |
-
 ---
 
-## 🎨 SEO Optimization
+## 🌍 SEO Optimization
 
 ### Meta Tags (index.html)
-- **Description**: 200+ karakter dengan keywords
-- **Keywords**: 1000+ keywords
-- **Open Graph**: Facebook, WhatsApp, Telegram, LinkedIn, Pinterest
-- **Twitter Cards**: Summary large image
-- **Dublin Core**: DC.title, DC.creator, DC.description
+- 📝 **Description**: 200+ karakter dengan keywords
+- 🔑 **Keywords**: 1000+ keywords
+- 📱 **Open Graph**: Facebook, WhatsApp, Telegram, LinkedIn, Pinterest
+- 🐦 **Twitter Cards**: Summary large image
+- 📚 **Dublin Core**: DC.title, DC.creator, DC.description
 
 ### Structured Data (JSON-LD)
-1. **Organization** - Company info + contactPoint
-2. **WebSite** - Site with search action
-3. **WebApplication** - App features
-4. **VideoObject** - Video metadata
-5. **SoftwareApplication** - App ratings
-6. **BreadcrumbList** - Navigation
-7. **FAQPage** - 12 Q&A
-8. **LocalBusiness** - Business info
-9. **CollectionPage** - Drama collection
-10. **QAPage** - Questions page
-11. **ProfilePage** - Profile
-12. **AboutPage** - About page
+1. 🏢 **Organization** - Company info + contactPoint
+2. 🌐 **WebSite** - Site with search action
+3. 📱 **WebApplication** - App features
+4. 🎬 **VideoObject** - Video metadata
+5. 💻 **SoftwareApplication** - App ratings
+6. 🍞 **BreadcrumbList** - Navigation
+7. ❓ **FAQPage** - 12 Q&A
+8. 🏪 **LocalBusiness** - Business info
+9. 📚 **CollectionPage** - Drama collection
+10. ❓ **QAPage** - Questions page
+11. 👤 **ProfilePage** - Profile
+12. ℹ️ **AboutPage** - About page
 
 ### Sitemaps
 - `sitemap.xml` - Main sitemap with pages
 - `sitemap-video.xml` - Video content
 - `sitemap-images.xml` - Image sitemap
-
-### Robots.txt
-- All search engine bots
-- Social media crawlers
-- Security exclusions
-
----
-
-## 📱 Halaman
-
-### Home
-- Hero carousel
-- Sections: Trending, Terbaru, Rekomendasi
-- Infinite scroll
-- Skeleton loading
-- Pull to refresh
-
-### For You
-- TikTok-style vertical scroll
-- Auto-play preview
-- Personal recommendations
-
-### Search
-- Real-time search
-- Search history
-- Filters: Country, Genre, Category
-- Trending searches
-
-### Detail
-- Drama info & description
-- Episode list with thumbnails
-- Related dramas
-- Play button
-
-### Player
-- Full video player
-- Gesture controls
-- Speed selector
-- Episode navigation
-- Watermark overlay
-- Toast notifications
-
-### Library
-- Continue watching
-- Favorites
-- Clear history
-
----
-
-## 🔧 Pengembangan
-
-### Menambah Provider Baru
-
-1. Edit `backend/routes/content.js`
-2. Tambahkan endpoint di switch statement
-3. Update `normalizeDrama()` function
-
-### Menambah Halaman
-
-1. Buat component di `frontend/src/pages/`
-2. Tambah route di `frontend/src/App.jsx`
-3. Import & render di router
-
-### Custom Theme
-
-Edit `frontend/src/index.css`:
-
-```css
-:root {
-  --primary-color: #e50914;  /* Merah */
-  --bg-color: #0a0a0a;       /* Hitam */
-  --card-bg: #1a1a1a;        /* Abu gelap */
-  --text-color: #ffffff;
-  --text-secondary: #888888;
-}
-```
-
-### Environment Variables
-
-| Variable | Development | Production |
-|----------|--------------|------------|
-| VITE_API_URL | http://localhost:8124/api | https://api.ibra.biz.id/api |
-| NODE_ENV | development | production |
-
----
-
-## 🚀 Deployment
-
-<p align="center">
-  <img src="/frontend/public/banner.png" alt="Deploy IBRA" width="100%">
-</p>
-
-### Production Checklist
-
-1. **Build Frontend**
-   ```bash
-   npm run build
-   ```
-
-2. **Set Environment**
-   ```bash
-   # Set production API URL
-   echo "VITE_API_URL=https://api.ibra.biz.id/api" > frontend/.env.production
-   ```
-
-3. **Run Production**
-   ```bash
-   npm run production
-   ```
-
-### Cloudflare Setup
-
-1. **Domains**
-   - ibra.biz.id → Frontend (Vite preview)
-   - api.ibra.biz.id → Backend (Port 8124)
-
-2. **SSL**
-   - Cloudflare Universal SSL
-   - Always use HTTPS
-
-3. **Caching**
-   - Static assets: 1 year
-   - API responses: 1 hour
-
-### Server Requirements
-
-- **CPU**: 1 core minimum
-- **RAM**: 512MB minimum
-- **Storage**: 1GB minimum
-- **Bandwidth**: Unlimited recommended
 
 ---
 
@@ -586,12 +384,12 @@ Edit `frontend/src/index.css`:
 - **WhatsApp**: +6285792820173
 
 ### Social Media
-- Instagram: [@ibradecode](https://instagram.com/ibradecode)
-- TikTok: [@ibradecode](https://tiktok.com/@ibradecode)
-- YouTube: [@IBRADecode](https://youtube.com/@IBRADecode)
-- Twitter: [@ibradecode](https://twitter.com/ibradecode)
-- Facebook: [ibradecode](https://facebook.com/ibradecode)
-- WhatsApp Channel: [IBRA Official](https://whatsapp.com/channel/0029VbCgDVm5a248NzdKq02s)
+- 📸 **Instagram**: [@ibradecode](https://instagram.com/ibradecode)
+- 🎵 **TikTok**: [@ibradecode](https://tiktok.com/@ibradecode)
+- 📺 **YouTube**: [@IBRADecode](https://youtube.com/@IBRADecode)
+- 🐦 **Twitter**: [@ibradecode](https://twitter.com/ibradecode)
+- 📘 **Facebook**: [ibradecode](https://facebook.com/ibradecode)
+- 💬 **WhatsApp Channel**: [IBRA Official](https://whatsapp.com/channel/0029VbCgDVm5a248NzdKq02s)
 
 ---
 
@@ -610,85 +408,43 @@ IBRA adalah platform streaming drama Asia yang dikembangkan dan dikelola oleh IB
 - ✅ Fork repository untuk pengembangan pribadi
 - ✅ Belajar dan memahami kode sumber
 - ✅ Melaporkan bug atau vulnerability
-- ✅ Berkontribusi dengan pull request (setelah disetujui)
 
 **Dilarang:**
 - ❌ Menyalin, mendistribusikan, atau menjual kode tanpa izin
 - ❌ Menggunakan kode untuk tujuan komersial tanpa izin
 - ❌ Menghapus atau memodifikasi atribusi dan lisensi
-- ❌ Menggunakan nama IBRA untuk proyek lain tanpa izin
-- ❌ Mengekstrak dan menggunakan database konten tanpa izin
-
-### Konten Drama
-
-- IBRA tidak menyimpan konten video di server sendiri
-- Semua konten drama berasal dari provider eksternal
-- IBRA hanya berfungsi sebagai agregator dan streamer
-- Konten drama dilindungi oleh hak cipta masing-masing pemilik
-
-### Penafian
-
-IBRA disediakan "sebagaimana adanya" tanpa jaminan apa pun, baik tersurat maupun tersirat. IBRA Decode tidak bertanggung jawab atas:
-- Ketersediaan layanan
-- Keakuratan konten
-- Kerusakan atau kehilangan data
-- Penggunaan tidak sah
-
-### Perubahan Lisensi
-
-IBRA Decode berhak untuk mengubah ketentuan lisensi kapan saja tanpa pemberitahuan. Penggunaan berkelanjutan platform berarti penerimaan ketentuan yang berlaku.
 
 ---
 
-## 📞 Kontak
+<div align="center">
 
-| Kanal | Informasi |
-|-------|-----------|
-| **Email** | contact@ibra.biz.id |
-| **WhatsApp** | +6285792820173 |
-| **Business** | business@ibra.biz.id |
-| **Support** | support@ibra.biz.id |
-| **Security** | security@ibra.biz.id |
+### 🎬 Made with 💜 by IBRA Decode
+
+<img src="https://forthebadge.com/images/badges/built-with-love.svg" width="150" alt="Built with Love">
+<img src="https://forthebadge.com/images/badges/open-source.svg" width="130" alt="Open Source">
 
 ---
 
-<p align="center">
-  <img src="/frontend/public/banner.png" alt="IBRA - Industri Bioskop Romansa Asia" width="100%">
-</p>
+### 🌟 Thanks for Visiting!
 
-<p align="center">
-  <strong>IBRA - Industri Bioskop Romansa Asia</strong>
-</p>
+<a href="https://github.com/ibradecode/ibra">
+  <img src="https://img.shields.io/github/stars/ibradecode/ibra?style=flat-square&logo=github" alt="Stars">
+</a>
+<a href="https://github.com/ibradecode/ibra">
+  <img src="https://img.shields.io/github/forks/ibradecode/ibra?style=flat-square&logo=github" alt="Forks">
+</a>
+<a href="https://github.com/ibradecode/ibra">
+  <img src="https://img.shields.io/github/license/ibradecode/ibra?style=flat-square&logo=license" alt="License">
+</a>
 
-<p align="center">
-  <a href="https://ibra.biz.id"><img src="https://img.shields.io/badge/Website-IBRA-e50914?style=flat-square&logo=google-chrome" alt="Website"></a>
-  <a href="https://instagram.com/ibradecode"><img src="https://img.shields.io/badge/Instagram-ibradecode-E4405F?style=flat-square&logo=instagram" alt="Instagram"></a>
-  <a href="https://tiktok.com/@ibradecode"><img src="https://img.shields.io/badge/TikTok-ibradecode-000000?style=flat-square&logo=tiktok" alt="TikTok"></a>
-  <a href="https://youtube.com/@IBRADecode"><img src="https://img.shields.io/badge/YouTube-IBRADecode-FF0000?style=flat-square&logo=youtube" alt="YouTube"></a>
-  <a href="https://twitter.com/ibradecode"><img src="https://img.shields.io/badge/Twitter-ibradecode-1DA1F2?style=flat-square&logo=twitter" alt="Twitter"></a>
-  <a href="https://wa.me/6285792820173"><img src="https://img.shields.io/badge/WhatsApp-+6285792820173-25D366?style=flat-square&logo=whatsapp" alt="WhatsApp"></a>
-</p>
+---
 
-<p align="center">
-  Dibuat dengan ❤️ oleh <strong>IBRA Decode</strong>
-</p>
+**🎬 IBRA - Industri Bioskop Romansa Asia**
 
-<p align="center">
-  <strong>IBRA - Industri Bioskop Romansa Asia</strong>
-</p>
+*"Nonton drama Asia terbaik, gratis, tanpa batas."*
 
-<p align="center">
-  "Nonton drama Asia terbaik, gratis, tanpa batas."
-</p>
+</div>
 
-<p align="center">
-  <a href="https://github.com/ibradecode/ibra">
-    <img src="https://img.shields.io/github/stars/ibradecode/ibra?style=flat-square&logo=github" alt="Stars">
-  </a>
-  <a href="https://github.com/ibradecode/ibra">
-    <img src="https://img.shields.io/github/forks/ibradecode/ibra?style=flat-square&logo=github" alt="Forks">
-  </a>
-  <a href="https://github.com/ibradecode/ibra">
-    <img src="https://img.shields.io/github/license/ibradecode/ibra?style=flat-square&logo=license" alt="License">
-  </a>
-</p>
+---
+
+<img src="https://user-images.githubusercontent.com/74038190/216122041-518ac897-8d92-4c6b-9b3f-ca01dcaf38ee.png" width="100%" alt="Footer Banner">
