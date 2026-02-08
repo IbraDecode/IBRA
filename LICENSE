@@ -1,0 +1,199 @@
+# Lisensi IBRA - Industri Bioskop Romansa Asia
+
+**Hak Cipta © 2024 IBRA Decode. Semua hak dilindungi undang-undang.**
+
+---
+
+## 📋 Ringkasan Lisensi
+
+IBRA adalah perangkat lunak proprietary yang dilindungi hak cipta. Penggunaan, distribusi, dan modifikasi tunduk pada ketentuan lisensi di bawah ini.
+
+---
+
+## 🎯 Ketentuan Penggunaan
+
+### ✅ Yang Diizinkan
+
+1. **Penggunaan Pribadi**
+   - Menggunakan platform IBRA secara gratis untuk streaming drama
+   - Membuat akun (jika diperlukan) untuk fitur personalisasi
+   - Menyimpan preferensi dan favorit
+
+2. **Pengembangan**
+   - Fork repository untuk pengembangan lokal
+   - Studi dan pembelajaran kode sumber
+   - Melaporkan bug atau vulnerability melalui channel yang benar
+   - Mengajukan kontribusi melalui pull request
+
+3. **Komersial Terbatas**
+   - Penggunaan untuk tujuan non-komersial
+   - Integrasi dengan sistem lain (setelah disetujui)
+
+### ❌ Yang Dilarang
+
+1. **Distribusi**
+   - Menyalin, menjual, atau mendistribusikan kode sumber
+   - Membuat turunan proyek tanpa izin tertulis
+   - Menggunakan nama IBRA untuk proyek turunan
+
+2. **Komersial**
+   - Menggunakan kode untuk tujuan komersial
+   - Monetisasi platform atau fitur tanpa izin
+   - Menghapus atau memodifikasi atribusi
+
+3. **Konten**
+   - Mengekstrak konten drama dari platform
+   - Mendownload atau menyimpan video tanpa izin
+   - Menyistribusikan konten drama
+
+4. **Teknis**
+   - Menghapus atau memodifikasi file lisensi
+   - Melakukan reverse engineering
+   -绕过 sistem keamanan
+   - Automasi akses tanpa izin
+
+---
+
+## 🔒 Hak Kekayaan Intelektual
+
+### Kode Sumber
+Seluruh kode sumber IBRA termasuk namun tidak terbatas pada:
+- Frontend (React, Vite)
+- Backend (Node.js, Express)
+- Konfigurasi dan skrip
+- Aset dan desain
+
+Dilindungi oleh hak cipta © 2024 IBRA Decode.
+
+### Merek Dagang
+"Merek IBRA", logo IBRA, dan semua merek dagang terkait adalah milik IBRA Decode.
+
+### Konten Drama
+Konten drama di platform IBRA berasal dari provider eksternal dan dilindungi oleh hak cipta masing-masing pemilik konten.
+
+---
+
+## ⚠️ Penafian
+
+### Penafian Umum
+
+IBRA disediakan "sebagaimana adanya" dan "sebagaimana tersedia" tanpa jaminan apa pun, baik tersurat maupun tersirat, termasuk namun tidak terbatas pada:
+
+- Kelayakan untuk tujuan tertentu
+- Keakuratan atau kelengkapan konten
+- Ketersediaan layanan tanpa gangguan
+- Keamanan platform
+
+### Batasan Tanggung Jawab
+
+IBRA Decode tidak bertanggung jawab atas:
+
+1. **Kerugian Langsung**
+   - Kerusakan atau kehilangan data
+   - Kehilangan keuntungan
+   - Gangguan bisnis
+
+2. **Kerugian Tidak Langsung**
+   - Kegagalan sistem
+   - Keterlambatan atau kegagalan transmisi
+   - Masalah kompatibilitas
+
+3. **Konten**
+   - Ketidakakuratan konten drama
+   - Ketersediaan episode
+   - Kualitas subtitle
+
+---
+
+## 🔐 Keamanan
+
+### Kebijakan Keamanan
+
+IBRA berkomitmen untuk:
+- Melindungi data pengguna
+- Mengamankan platform dari vulnerability
+- Responsible disclosure untuk bug
+
+### Pelaporan Vulnerability
+
+Jika Anda menemukan vulnerability keamanan, laporkan melalui:
+
+- **Email**: security@ibra.biz.id
+- **WhatsApp**: +6285792820173
+- **PGP Key**: https://ibra.biz.id/security-key.asc
+
+Kami berkomitmen untuk merespons dalam 48 jam dan tidak mengambil tindakan hukum terhadap pelapor yang bertanggung jawab.
+
+---
+
+## 📝 Perubahan Lisensi
+
+IBRA Decode berhak untuk:
+
+1. Mengubah ketentuan lisensi kapan saja
+2. Menghentikan layanan dengan pemberitahuan yang wajar
+3. Menambahkan atau menghapus fitur
+
+Perubahan akan diinformasikan melalui:
+- Email kepada pengguna terdaftar
+- Pengumuman di platform
+- Pembaruan dokumentasi
+
+---
+
+## 🌐 Kepatuhan Hukum
+
+IBRA berkomitmen untuk mematuhi:
+
+1. **Undang-Undang Hak Cipta**
+   - UU No. 28 Tahun 2014 (Indonesia)
+  - DMCA (Amerika Serikat)
+   - EU Copyright Directive
+
+2. **Perlindungan Data**
+   - UU No. 27 Tahun 2022 (Indonesia)
+   - GDPR (Uni Eropa)
+
+3. **Perdagangan Elektronik**
+   - UU ITE dan perubahannya
+
+---
+
+## 📧 Informasi Kontak
+
+| Jenis | Informasi |
+|-------|-----------|
+| **Umum** | contact@ibra.biz.id |
+| **Bisnis** | business@ibra.biz.id |
+| **Support** | support@ibra.biz.id |
+| **Keamanan** | security@ibra.biz.id |
+| **Privasi** | privacy@ibra.biz.id |
+| **WhatsApp** | +6285792820173 |
+
+---
+
+## 📜 Versi Lisensi
+
+- **Versi**: 2.0.0
+- **Tanggal Efektif**: 8 Februari 2024
+- **Bahasa**: Indonesia (versi Inggris tersedia atas permintaan)
+
+---
+
+## 🙏 Pengakuan
+
+Terima kasih kepada:
+- Tim pengembang IBRA
+- Komunitas drama Asia
+- Kontributor open source
+- Pengguna IBRA
+
+---
+
+<p align="center">
+  <strong>Hak Cipta © 2024 IBRA Decode</strong>
+</p>
+
+<p align="center">
+  Semua hak dilindungi undang-undang.
+</p>
