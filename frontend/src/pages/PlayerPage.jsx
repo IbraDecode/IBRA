@@ -18,7 +18,7 @@ function updateSEO({ title, description, image, episode, drama }) {
   if (!drama) return;
 
   const fullTitle = `${drama.title} - Episode ${episode?.index || 1} | IBRA`;
-  const fullDesc = description || drama.description?.slice(0, 160) || `Nonton ${drama.title} episode ${episode?.index || 1} secara gratis di IBRA. Drama Asia berkualitas tinggi dengan subtitle Indonesia.`;
+  const fullDesc = description || drama.description?.slice(0, 160) || `Nonton ${drama.title} episode ${episode?.index || 1} secara gratis di IBRA. Drama Asia berkualitas tinggi dengan subtitle Indonesia. ${drama.categories?.[0]?.name ? 'Genre: ' + drama.categories.map(c => c.name).join(', ') + '.' : ''}`;
   const shareImage = image || episode?.cover || drama.cover || '';
   const pageUrl = window.location.href;
 
@@ -36,6 +36,8 @@ function updateSEO({ title, description, image, episode, drama }) {
     'og:type': 'video.episode',
     'og:site_name': 'IBRA',
     'og:locale': 'id_ID',
+    'article:tag': drama.categories?.map(c => c.name) || [],
+    'article:section': 'Entertainment',
     'twitter:card': 'summary_large_image',
     'twitter:site': '@ibradecode',
     'twitter:creator': '@ibradecode',
@@ -43,11 +45,33 @@ function updateSEO({ title, description, image, episode, drama }) {
     'twitter:description': fullDesc,
     'twitter:image': shareImage,
     'twitter:image:alt': `${drama.title} Episode`,
+    'twitter:player': pageUrl,
+    'twitter:player:width': '1280',
+    'twitter:player:height': '720',
+    'video:tag': [drama.title, `Episode ${episode?.index || 1}`, ...(drama.categories?.map(c => c.name) || [])],
+    'video:series': drama.title,
   };
 
   Object.entries(metaTags).forEach(([name, content]) => {
     if (!content) return;
     let meta = document.querySelector(`meta[name="${name}"], meta[property="${name}"]`);
+    if (!meta) {
+      meta = document.createElement('meta');
+      if (name.startsWith('og:') || name.startsWith('twitter:') || name.startsWith('article:') || name.startsWith('video:')) {
+        meta.setAttribute('property', name);
+      } else {
+        meta.setAttribute('name', name);
+      }
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute('content', Array.isArray(content) ? content.join(', ') : content);
+  });
+
+  const canonical = document.querySelector('link[rel="canonical"]');
+  if (canonical) {
+    canonical.setAttribute('href', pageUrl);
+  }
+}
     if (!meta) {
       meta = document.createElement('meta');
       if (name.startsWith('og:') || name.startsWith('twitter:')) {
