@@ -72,23 +72,6 @@ function updateSEO({ title, description, image, episode, drama }) {
     canonical.setAttribute('href', pageUrl);
   }
 }
-    if (!meta) {
-      meta = document.createElement('meta');
-      if (name.startsWith('og:') || name.startsWith('twitter:')) {
-        meta.setAttribute('property', name);
-      } else {
-        meta.setAttribute('name', name);
-      }
-      document.head.appendChild(meta);
-    }
-    meta.setAttribute('content', content);
-  });
-
-  const canonical = document.querySelector('link[rel="canonical"]');
-  if (canonical) {
-    canonical.setAttribute('href', pageUrl);
-  }
-}
 
 function generateStructuredData({ drama, episode, currentIndex }) {
   if (!drama) return null;
