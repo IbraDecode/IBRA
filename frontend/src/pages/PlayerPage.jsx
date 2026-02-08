@@ -98,14 +98,30 @@ function generateStructuredData({ drama, episode, currentIndex }) {
       '@type': 'Organization',
       name: 'IBRA Decode',
       url: 'https://ibra.biz.id',
+      'contactPoint': {
+        '@type': 'ContactPoint',
+        'telephone': '+6285792820173',
+        'contactType': 'customer service'
+      }
     },
     producer: {
       '@type': 'Organization',
       name: 'IBRA',
       url: 'https://ibra.biz.id',
     },
+    publisher: {
+      '@type': 'Organization',
+      name: 'IBRA',
+      url: 'https://ibra.biz.id',
+      logo: 'https://ibra.biz.id/logo.png'
+    },
     genre: drama.categories?.map(c => c.name) || ['Drama Asia'],
-    keywords: `${drama.title}, episode ${episode?.index || 1}, drama ${drama.categories?.[0]?.name || 'asia'}, streaming gratis`,
+    keywords: `${drama.title}, episode ${episode?.index || 1}, drama ${drama.categories?.[0]?.name || 'asia'}, streaming gratis, ibra decode, drama korea, drama china`,
+    associatedMedia: {
+      '@type': 'MediaObject',
+      name: drama.title,
+      url: `https://ibra.biz.id/detail/${drama.id}`
+    },
   };
 }
 
