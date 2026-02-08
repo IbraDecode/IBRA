@@ -5,10 +5,15 @@
 </p>
 
 <p align="center">
+  <img src="/frontend/public/banner.png" alt="IBRA Banner - Streaming Drama Asia Gratis" width="100%">
+</p>
+
+<p align="center">
   <strong>Platform Streaming Drama Asia Terbaik dan Gratis</strong>
 </p>
 
 <p align="center">
+  <a href="https://ibra.biz.id" target="_blank"><img src="https://img.shields.io/badge/Visit-IBRA-e50914?style=for-the-badge&logo=google-chrome" alt="Visit IBRA"></a>
   <a href="#fitur-utama">Fitur</a> •
   <a href="#teknologi">Teknologi</a> •
   <a href="#instalasi">Instalasi</a> •
@@ -20,6 +25,10 @@
 </p>
 
 ---
+
+<p align="center">
+  <img src="/frontend/public/banner.png" alt="IBRA - Nonton Drama Asia Gratis" width="100%">
+</p>
 
 ## 📱 IBRA - Platform Streaming Drama Asia
 
@@ -37,6 +46,18 @@ Memberikan akses streaming drama Asia berkualitas tinggi secara gratis untuk sem
 ---
 
 ## ✨ Fitur Utama
+
+<p align="center">
+  <img src="/frontend/public/banner.png" alt="IBRA Features" width="100%">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Free-100%25-e50914?style=flat-square&logo=freebsd" alt="Free">
+  <img src="https://img.shields.io/badge/No-Login-00C851?style=flat-square&logo=login" alt="No Login">
+  <img src="https://img.shields.io/badge/No-Ads-FF5722?style=flat-square&logo=google-ads" alt="No Ads">
+  <img src="https://img.shields.io/badge/PWA-Support-5A0FC8?style=flat-square&logo=pwa" alt="PWA">
+  <img src="https://img.shields.io/badge/SEO-Optimized-4CAF50?style=flat-square&logo=google" alt="SEO">
+</p>
 
 ### 🔓 Tanpa Login
 - Identitas perangkat menggantikan akun pengguna
@@ -111,6 +132,26 @@ Memberikan akses streaming drama Asia berkualitas tinggi secara gratis untuk sem
 
 ## 🛠 Teknologi
 
+<p align="center">
+  <img src="/frontend/public/banner.png" alt="IBRA Technology Stack" width="100%">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react" alt="React">
+  <img src="https://img.shields.io/badge/Vite-5-646CFF?style=flat-square&logo=vite" alt="Vite">
+  <img src="https://img.shields.io/badge/Node.js-18-339933?style=flat-square&logo=node.js" alt="Node.js">
+  <img src="https://img.shields.io/badge/Express-4-000000?style=flat-square&logo=express" alt="Express">
+  <img src="https://img.shields.io/badge/SQLite-3-003B57?style=flat-square&logo=sqlite" alt="SQLite">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/JavaScript-ES2022-F7DF1E?style=flat-square&logo=javascript" alt="JavaScript">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5" alt="HTML5">
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3" alt="CSS3">
+  <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git" alt="Git">
+  <img src="https://img.shields.io/badge/Cloudflare-F38020?style=flat-square&logo=cloudflare" alt="Cloudflare">
+</p>
+
 ### Frontend
 - **React 18** - UI library
 - **Vite 5** - Build tool
@@ -138,6 +179,10 @@ Memberikan akses streaming drama Asia berkualitas tinggi secara gratis untuk sem
 ---
 
 ## 📦 Instalasi
+
+<p align="center">
+  <img src="/frontend/public/banner.png" alt="Install IBRA" width="100%">
+</p>
 
 ### Persyaratan
 - Node.js 18+
@@ -488,6 +533,10 @@ Edit `frontend/src/index.css`:
 
 ## 🚀 Deployment
 
+<p align="center">
+  <img src="/frontend/public/banner.png" alt="Deploy IBRA" width="100%">
+</p>
+
 ### Production Checklist
 
 1. **Build Frontend**
@@ -604,6 +653,23 @@ IBRA Decode berhak untuk mengubah ketentuan lisensi kapan saja tanpa pemberitahu
 ---
 
 <p align="center">
+  <img src="/frontend/public/banner.png" alt="IBRA - Industri Bioskop Romansa Asia" width="100%">
+</p>
+
+<p align="center">
+  <strong>IBRA - Industri Bioskop Romansa Asia</strong>
+</p>
+
+<p align="center">
+  <a href="https://ibra.biz.id"><img src="https://img.shields.io/badge/Website-IBRA-e50914?style=flat-square&logo=google-chrome" alt="Website"></a>
+  <a href="https://instagram.com/ibradecode"><img src="https://img.shields.io/badge/Instagram-ibradecode-E4405F?style=flat-square&logo=instagram" alt="Instagram"></a>
+  <a href="https://tiktok.com/@ibradecode"><img src="https://img.shields.io/badge/TikTok-ibradecode-000000?style=flat-square&logo=tiktok" alt="TikTok"></a>
+  <a href="https://youtube.com/@IBRADecode"><img src="https://img.shields.io/badge/YouTube-IBRADecode-FF0000?style=flat-square&logo=youtube" alt="YouTube"></a>
+  <a href="https://twitter.com/ibradecode"><img src="https://img.shields.io/badge/Twitter-ibradecode-1DA1F2?style=flat-square&logo=twitter" alt="Twitter"></a>
+  <a href="https://wa.me/6285792820173"><img src="https://img.shields.io/badge/WhatsApp-+6285792820173-25D366?style=flat-square&logo=whatsapp" alt="WhatsApp"></a>
+</p>
+
+<p align="center">
   Dibuat dengan ❤️ oleh <strong>IBRA Decode</strong>
 </p>
 
@@ -613,4 +679,16 @@ IBRA Decode berhak untuk mengubah ketentuan lisensi kapan saja tanpa pemberitahu
 
 <p align="center">
   "Nonton drama Asia terbaik, gratis, tanpa batas."
+</p>
+
+<p align="center">
+  <a href="https://github.com/ibradecode/ibra">
+    <img src="https://img.shields.io/github/stars/ibradecode/ibra?style=flat-square&logo=github" alt="Stars">
+  </a>
+  <a href="https://github.com/ibradecode/ibra">
+    <img src="https://img.shields.io/github/forks/ibradecode/ibra?style=flat-square&logo=github" alt="Forks">
+  </a>
+  <a href="https://github.com/ibradecode/ibra">
+    <img src="https://img.shields.io/github/license/ibradecode/ibra?style=flat-square&logo=license" alt="License">
+  </a>
 </p>
