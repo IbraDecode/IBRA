@@ -5,6 +5,7 @@ import SearchPage from './pages/SearchPage';
 import DetailPage from './pages/DetailPage';
 import PlayerPage from './pages/PlayerPage';
 import LibraryPage from './pages/LibraryPage';
+import ForYouPage from './pages/ForYouPage';
 import LoadingSpinner from './components/LoadingSpinner';
 import { initSession, getSession, API_BASE } from './services/api';
 
@@ -80,6 +81,7 @@ function AppContent() {
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflowY: 'auto', paddingBottom: '70px' }}>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/foryou" element={<ForYouPage />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/detail/:dramaId" element={<DetailPage />} />
           <Route path="/player/:dramaId/:episodeId" element={<PlayerPage />} />
@@ -96,6 +98,7 @@ function BottomNavigation() {
 
   const navItems = [
     { path: '/', icon: 'home', label: 'Home' },
+    { path: '/foryou', icon: 'foryou', label: 'Untuk Anda' },
     { path: '/library', icon: 'library', label: 'Library' }
   ];
 
@@ -147,6 +150,11 @@ function NavIcon({ name, size }) {
       <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
         <polyline points="9 22 9 12 15 12 15 22" />
+      </svg>
+    ),
+    foryou: (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
       </svg>
     ),
     search: (

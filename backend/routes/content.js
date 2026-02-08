@@ -254,7 +254,7 @@ router.get('/search', async (req, res) => {
       offset: parseInt(offset)
     });
 
-    const books = response.data?.search_data?.[0]?.books || response.books || [];
+    const books = response.data?.search_data?.flatMap(d => d.books) || response.data?.search_data?.[0]?.books || response.books || [];
     const dramas = books.map(normalizeDrama);
 
     const result = {
@@ -359,6 +359,43 @@ router.get('/recommendations', async (req, res) => {
 router.get('/clear-cache', (req, res) => {
   cache.clear();
   res.json({ success: true, message: 'Cache cleared' });
+});
+
+router.get('/for-you', async (req, res) => {
+  try {
+    const { history } = req.query;
+    let watchedIds = [];
+
+    try {
+      if (history) {
+        watchedIds = JSON.parse(history);
+      }
+    } catch (e) {
+      watchedIds = [];
+    }
+
+    const [latest, trending] = await Promise.all([
+      fetchFromMelolo('latest'),
+      fetchFromMelolo('trending')
+    ]);
+
+    let allDramas = [...(latest.books || []), ...(trending.books || [])]
+      .filter(item => !watchedIds.includes(item.book_id || item.series_id))
+      .map(normalizeDrama);
+
+    const shuffled = allDramas.sort(() => Math.random() - 0.5).slice(0, 20);
+
+    const result = {
+      success: true,
+      data: shuffled,
+      cached_at: Date.now()
+    };
+
+    res.json(result);
+  } catch (error) {
+    console.error('ForYou error:', error);
+    res.status(500).json({ error: 'Gagal memuat konten for you' });
+  }
 });
 
 export default router;

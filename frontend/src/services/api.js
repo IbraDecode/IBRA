@@ -1,6 +1,7 @@
-export const API_BASE = 'https://api.ibra.biz.id/api';
+const API_BASE = import.meta.env?.VITE_API_URL || 'https://api.ibra.biz.id/api';
 
-export function getOptimizedImageUrl(url, width = 400) {
+export { API_BASE };
+export const getOptimizedImageUrl = (url, width = 400) => {
   if (!url) return '';
   return `${API_BASE}/content/image?url=${encodeURIComponent(url)}&width=${width}`;
 }
@@ -148,6 +149,10 @@ export function fetchDetail(dramaId) {
 export function fetchRecommendations(historyIds = []) {
   const query = historyIds.length > 0 ? `?history=${encodeURIComponent(JSON.stringify(historyIds))}` : '';
   return fetchPublicAPI(`/content/recommendations${query}`);
+}
+
+export function fetchForYouContent() {
+  return fetchPublicAPI('/content/for-you');
 }
 
 export function fetchStream(episodeId) {

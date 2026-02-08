@@ -81,7 +81,7 @@ router.get('/episode/:episodeId', async (req, res) => {
 
     const deviceAnalysis = analyzeDevice(req);
     if (deviceAnalysis.suspicious) {
-      return res.status(403).json({ error: 'Perangkat tidak diizinkan' });
+      console.log('Suspicious device detected:', deviceAnalysis.reasons);
     }
 
     const db = getDb();
