@@ -1,14 +1,140 @@
-# Robots.txt for IBRA
+# Robots.txt for IBRA - Industri Bioskop Romansa Asia
+# Best Free Asian Drama Streaming Platform
+
 User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /rss/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /internal/
+Disallow: /backend/
 
-# Sitemap
+# Allow search engines to crawl all public pages
+Allow: /$
+Allow: /foryou
+Allow: /search
+Allow: /library
+Allow: /detail/
+Allow: /player/
+Allow: /about
+Allow: /contact
+Allow: /faq
+Allow: /privacy
+Allow: /terms
+Allow: /changelog
+
+# Sitemap locations
 Sitemap: https://ibra.biz.id/sitemap.xml
+Sitemap: https://ibra.biz.id/sitemap-video.xml
+Sitemap: https://ibra.biz.id/sitemap-images.xml
 
-# Crawl-delay
+# Crawl-delay for respecting server
 Crawl-delay: 10
 
-# Host
+# Host declaration
 Host: https://ibra.biz.id
+
+# Google-specific
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+
+User-agent: Googlebot-Image
+Allow: /banner.png
+Allow: /logo.png
+Allow: /screenshots/
+Allow: /drama-covers/
+
+User-agent: Googlebot-Video
+Allow: /player/
+Disallow: /api/
+
+# Bing-specific
+User-agent: Bingbot
+Allow: /
+Disallow: /api/
+
+User-agent: msnbot
+Allow: /
+Disallow: /api/
+
+# Yahoo-specific
+User-agent: Slurp
+Allow: /
+Disallow: /api/
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+Disallow: /api/
+
+# Baidu
+User-agent: Baiduspider
+Allow: /
+Disallow: /api/
+
+# Yandex
+User-agent: YandexBot
+Allow: /
+Disallow: /api/
+
+# Other bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SEMrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Social media bots
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Pinterestbot
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+# Cache control
+Cache-Control: no-cache, no-store, must-revalidate
+Pragma: no-cache
+Expires: 0
+
+# Security
+Disallow: /.env
+Disallow: /config/
+Disallow: /credentials/
+Disallow: /.git/
+Disallow: /.vscode/
+Disallow: /node_modules/
+Disallow: /package.json
+Disallow: /package-lock.json
+
+# API documentation
+Disallow: /api-docs/
+Disallow: /swagger/
+Disallow: /graphql/
+
+# Performance optimization
+# Add cache headers for static resources
+User-agent: *
+Clean-param: ref /player/
+
+# Hreflang alternates
+# Already declared in HTML head meta tags

@@ -1,0 +1,82 @@
+# security.txt - Security Policy for IBRA
+# Best Free Asian Drama Streaming Platform
+
+# Our Security Commitment
+IBRA takes the security of our platform and users' data very seriously.
+We are committed to responsible disclosure and working with security researchers.
+
+## Reporting Security Vulnerabilities
+
+If you believe you have found a security vulnerability on IBRA,
+please report it responsibly by following our security policy.
+
+### How to Report
+
+Email: security@ibra.biz.id
+PGP Key: https://ibra.biz.id/security-key.asc
+Response Time: Within 48 hours
+
+Please include the following information in your report:
+- Description of the vulnerability
+- Steps to reproduce
+- Potential impact
+- Your contact information (optional)
+
+## Scope
+
+In-scope:
+- ibra.biz.id (main website)
+- api.ibra.biz.id (API endpoints)
+- Mobile applications
+
+Out-of-scope:
+- Third-party services
+- Social media accounts
+- Physical security
+
+## Responsible Disclosure Guidelines
+
+We ask that you:
+1. Do not disclose the vulnerability publicly until we have had 60 days to respond
+2. Do not access, modify, or delete user data
+3. Do not perform testing that could affect other users
+4. Do not use social engineering or phishing attacks
+5. Do not install any persistent backdoors
+6. Report vulnerabilities through proper channels
+
+## Our Commitment
+
+We commit to:
+1. Respond to all reports within 48 hours
+2. Keep you informed of our progress
+3. Not take legal action against responsible researchers
+4. Give appropriate credit in our security hall of fame (with permission)
+5. Work with you to verify and fix the vulnerability
+
+## Bug Bounty Program
+
+Currently, IBRA does not have a monetary bug bounty program.
+However, we recognize responsible disclosure with:
+- Public acknowledgment (with permission)
+- Listed in our security researchers hall of fame
+- Exclusive IBRA merchandise for significant findings
+
+## Safe Harbor
+
+We consider activities conducted in accordance with this policy
+to be authorized and will not pursue legal action against researchers.
+
+## Contact
+
+General Security Inquiries: security@ibra.biz.id
+PGP Public Key: https://ibra.biz.id/security-key.asc
+Security Hotline: +6285792820173 (for urgent issues)
+
+## Last Updated
+February 8, 2024
+
+## Encryption
+
+All communications can be encrypted using our PGP key.
+Key ID: [To be generated]
+Fingerprint: [To be generated]

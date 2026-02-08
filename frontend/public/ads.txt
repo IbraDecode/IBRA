@@ -1,0 +1,24 @@
+# ads.txt - Authorized Digital Sellers for IBRA
+# Best Free Asian Drama Streaming Platform
+
+# IBRA does not run third-party advertising
+# This file is kept for compliance and future advertising partners
+
+# If you are an authorized ad technology company wanting to work with IBRA,
+# please contact: advertising@ibra.biz.id
+
+# Current Status: No third-party advertising
+# IBRA is a free, ad-free platform
+
+# For potential advertising partners:
+# Please contact our advertising team at advertising@ibra.biz.id
+
+# IBRA reserves the right to modify this file at any time.
+
+# Google AdSense
+# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+
+# For Authorized Sellers Only
+# This file helps prevent counterfeit inventory and ensures transparency
+
+# Last Updated: February 8, 2024

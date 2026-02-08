@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<browserconfig>
+  <msapplication>
+    <tile>
+      <square70x70logo src="/favicon/ms-icon-70x70.png"/>
+      <square150x150logo src="/favicon/ms-icon-150x150.png"/>
+      <square310x310logo src="/favicon/ms-icon-310x310.png"/>
+      <wide310x150logo src="/favicon/ms-icon-310x150.png"/>
+      <TileColor>#e50914</TileColor>
+      <TileImage src="/favicon/ms-icon-144x144.png"/>
+    </tile>
+    <notification>
+      <badge>60</badge>
+      <notification>
+       pollingurl-1>
+        <frequency>30m</frequency>
+        <cycle>1</cycle>
+      </notification>
+    </notification>
+  </msapplication>
+</browserconfig>

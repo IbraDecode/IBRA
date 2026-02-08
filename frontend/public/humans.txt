@@ -1,0 +1,77 @@
+# humans.txt - Credits for IBRA Team
+# Best Free Asian Drama Streaming Platform
+
+## Team
+
+### Development
+Founder & Lead Developer: IBRA Decode
+Contact: contact@ibra.biz.id
+Website: https://ibra.biz.id
+
+### Core Team
+Frontend Developer: IBRA Team
+Backend Developer: IBRA Team
+UI/UX Designer: IBRA Team
+Quality Assurance: IBRA Team
+Customer Support: IBRA Support Team
+
+### Technologies Used
+- React.js
+- Node.js
+- Express.js
+- Vite
+- CSS-in-JS
+- React Router
+
+## Site Information
+Name: IBRA - Industri Bioskop Romansa Asia
+URL: https://ibra.biz.id
+Description: Platform streaming drama Asia terbaik dan gratis
+Founded: 2024
+Location: Jakarta, Indonesia
+
+## Social Media
+Instagram: https://instagram.com/ibradecode
+Twitter: https://twitter.com/ibradecode
+TikTok: https://tiktok.com/@ibradecode
+YouTube: https://youtube.com/@IBRADecode
+Facebook: https://facebook.com/ibradecode
+WhatsApp: https://wa.me/6285792820173
+
+## Acknowledgments
+Thanks to all Asian drama lovers who support IBRA!
+Special thanks to the drama production companies and actors.
+Credits to all content creators.
+
+## Mission
+IBRA's mission is to provide free, high-quality Asian drama streaming
+to drama lovers worldwide with subtitle support and excellent user experience.
+
+## Technology
+Built with modern web technologies for fast, responsive, and accessible
+streaming experience across all devices.
+
+## Performance
+IBRA aims for 99.9% uptime and fast loading times globally.
+We use CDN, caching, and optimization techniques for best performance.
+
+## Localization
+IBRA is available in:
+- Indonesian (Primary)
+- English (Coming Soon)
+- Malay
+- Chinese (Coming Soon)
+- Thai (Coming Soon)
+- Korean (Coming Soon)
+
+## Contact
+Business Inquiries: business@ibra.biz.id
+Customer Support: support@ibra.biz.id
+Partnership: partnership@ibra.biz.id
+Press: press@ibra.biz.id
+
+## License
+All rights reserved. © 2024 IBRA Decode.
+
+## Last Updated
+February 8, 2024
