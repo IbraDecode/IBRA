@@ -14,6 +14,59 @@ function useThrottledCallback(callback, delay) {
   }, [callback, delay]);
 }
 
+function updateSEO({ title, description, image, episode, drama }) {
+  const fullTitle = `${drama?.title || 'Drama'} - Episode ${episode?.index || 1} | IBRA`;
+  const fullDesc = description || drama?.description?.slice(0, 160) || 'Nonton drama Asia berkualitas tinggi secara gratis di IBRA.';
+  const shareImage = image || drama?.cover || drama?.episodes?.[0]?.cover || '';
+
+  document.title = fullTitle;
+
+  const metaTags = {
+    description: fullDesc,
+    'og:title': fullTitle,
+    'og:description': fullDesc,
+    'og:image': shareImage,
+    'og:url': window.location.href,
+    'twitter:title': fullTitle,
+    'twitter:description': fullDesc,
+    'twitter:image': shareImage,
+  };
+
+  Object.entries(metaTags).forEach(([name, content]) => {
+    let meta = document.querySelector(`meta[name="${name}"], meta[property="${name}"]`);
+    if (!meta) {
+      meta = document.createElement('meta');
+      if (name.startsWith('og:') || name.startsWith('twitter:')) {
+        meta.setAttribute('property', name);
+      } else {
+        meta.setAttribute('name', name);
+      }
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute('content', content);
+  });
+}
+
+function generateStructuredData({ drama, episode }) {
+  if (!drama) return null;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: `${drama.title} - Episode ${episode?.index || 1}`,
+    description: drama.description?.slice(0, 500) || '',
+    thumbnailUrl: [episode?.cover || drama.over || ''].filter(Boolean),
+    duration: episode?.duration ? `PT${Math.floor(episode.duration / 60)}M${episode.duration % 60}S` : '',
+    uploadDate: new Date().toISOString(),
+    contentUrl: window.location.href,
+    partOfSeries: {
+      '@type': 'TVSeries',
+      name: drama.title,
+      numberOfEpisodes: drama.total_episodes,
+    },
+  };
+}
+
 export default function PlayerPage() {
   const { dramaId, episodeId } = useParams();
   const navigate = useNavigate();
